@@ -6,9 +6,14 @@ using TMPro;
 
 public class InventoryController : MonoBehaviour
 {
-    [SerializeField] private GameObject inventoryUI;
+    [SerializeField] private RectTransform inventoryUI;
     [SerializeField] private Image[] imageGrid;
-    [SerializeField] private SpriteRenderer testSprite; 
+    [SerializeField] private SpriteRenderer testSprite;
+
+    [SerializeField] private float inventoryHiddenPos;
+    [SerializeField] private float inventoryDisplayedPos;
+    [SerializeField] private float inventoryAnimationDuration;
+    [SerializeField] private LeanTweenType inventoryEaseType;
 
     private PlayerControlSystem playerControls;
     private bool isInventoryActive;
@@ -63,8 +68,7 @@ public class InventoryController : MonoBehaviour
         }
 
         Debug.Log("Inventory Active: " + isInventoryActive);
-
-        inventoryUI.SetActive(isInventoryActive);
+        ToggleAnimation();
 
         //Display all of the items in the inventory
         if (isInventoryActive)
@@ -72,6 +76,11 @@ public class InventoryController : MonoBehaviour
 
         else
             activeInventoryID = -1;
+    }
+
+    private void ToggleAnimation()
+    {
+        LeanTween.moveX(inventoryUI, isInventoryActive? inventoryDisplayedPos : inventoryHiddenPos, inventoryAnimationDuration).setEase(inventoryEaseType);
     }
 
     private void DisplayInventory()
@@ -109,7 +118,7 @@ public class InventoryController : MonoBehaviour
             hasSuccessfulInteraction = false;
         }
 
-        inventoryUI.SetActive(isInventoryActive);
+        ToggleAnimation();
 
         //Create the inventory display again with the updated information
         if (isInventoryActive)
