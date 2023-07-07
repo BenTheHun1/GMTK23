@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Timer : MonoBehaviour
 {
@@ -11,10 +12,14 @@ public class Timer : MonoBehaviour
 
     private bool setTimer = false;
 
+    public TMP_Text clock;
+
     // Start is called before the first frame update
     void Start()
     {
-        DisplayCurrentDateTime();
+        //DisplayCurrentDateTime();
+        //TimeSpan test = new TimeSpan(0, 0, 0, 10);
+        //StartCountdown(test);
     }
 
     // Update is called once per frame
@@ -35,7 +40,7 @@ public class Timer : MonoBehaviour
 
     public void CompareDateTime()
     {
-        if (DateTime.Compare(countdownTime, GetDateTime()) >= 0)
+        if (DateTime.Compare(countdownTime, GetDateTime()) <= 0)
         {
             StopCountdown();
         }
@@ -45,7 +50,10 @@ public class Timer : MonoBehaviour
     public DateTime StartCountdown(TimeSpan duration)
     {
         setTimer = true;
-        return countdownTime = GetDateTime().Add(duration);
+        countdownTime = GetDateTime().Add(duration);
+        SetPlayerPrefs();
+        DisplayCountdownTime();
+        return countdownTime;
     }
 
     public void StopCountdown()
@@ -55,13 +63,40 @@ public class Timer : MonoBehaviour
     }
 
 
+    public void SetPlayerPrefs()
+    {
+        PlayerPrefs.SetString("CountdownTime", countdownTime.ToString());
+        PlayerPrefs.SetString("TimerBool", setTimer.ToString());
+    }
+
+
     public void DisplayCurrentDateTime()
     {
-        Debug.Log(DateTime.Now.ToString());
+        clock.SetText(DateTime.Now.ToString());
     }
 
     public void DisplayCountdownTime()
     {
-        Debug.Log(countdownTime.ToString());
+        clock.SetText(countdownTime.ToString());
+    }
+
+
+    public DateTime GetTimeFromPrefs()
+    {
+        DateTime.TryParse(PlayerPrefs.GetString("CountdownTime"), out countdownTime);
+        return countdownTime;
+    }
+
+    public bool GetBoolFromPrefs()
+    {
+        if (PlayerPrefs.GetString("TimerBool").Equals("false"))
+        {
+            setTimer = false;
+        }
+        else
+        {
+            setTimer = true;
+        }
+        return setTimer;
     }
 }
