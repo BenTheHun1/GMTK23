@@ -3,19 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class KaijuStats : MonoBehaviour
 {
-	public float hunger;
-	public Image hungerDisplay;
-	public float hungerDecay;
-
-	public float health;
-	public Image healthDisplay;
-	public float healthDecayFromHunger;
-
-	public float destructionNeed;
-	public Image destructionDisplay;
-	public float destructionDecay;
+	public Kaiju kaiju;
+	public float hunger, health, destructionNeed;
+	public Image hungerDisplay, healthDisplay, destructionDisplay;
 
 	public string Name;
 	public int monsterTypeID; //use to display the right sprite?
@@ -24,24 +17,30 @@ public class KaijuStats : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
+		hungerDisplay = GameObject.Find("Hunger Meter").GetComponent<Image>();
+		healthDisplay = GameObject.Find("Health Meter").GetComponent<Image>();
+		destructionDisplay = GameObject.Find("Destruction Meter").GetComponent<Image>();
+		hunger = kaiju.maxHunger; 
+		health = kaiju.maxHealth; 
+		destructionNeed = kaiju.maxDestructionNeed;
+		GetComponent<SpriteRenderer>().sprite = kaiju.sprite;
+	}
 
     // Update is called once per frame
     void Update()
     {
 		if (hunger > 0f)
 		{
-			hunger -= 0.1f * Time.deltaTime * hungerDecay;
+			hunger -= 0.1f * Time.deltaTime * kaiju.hungerDecay;
 			hungerDisplay.fillAmount = hunger / 100f;
 		}
 		else
 		{
-			health -= 0.1f * Time.deltaTime * healthDecayFromHunger;
+			health -= 0.1f * Time.deltaTime * kaiju.healthDecayFromHunger;
 			healthDisplay.fillAmount = health / 100f;
 		}
 
-		destructionNeed -= 0.1f * Time.deltaTime * destructionDecay;
+		destructionNeed -= 0.1f * Time.deltaTime * kaiju.destructionDecay;
 		destructionDisplay.fillAmount = destructionNeed / 100f;
 
 		if (health <= 0f)
@@ -54,9 +53,9 @@ public class KaijuStats : MonoBehaviour
 	{
 		hunger += Mathf.Abs(amount);
 		alignment += amount;
-		if (hunger > 100f)
+		if (hunger > kaiju.maxHunger)
 		{
-			hunger = 100f;
+			hunger = kaiju.maxHunger;
 		}
 	}
 
