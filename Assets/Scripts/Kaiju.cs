@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Pochita", menuName = "Kaiju", order = 1)]
 public class Kaiju : ScriptableObject
 {
+	public int id = 0;
 	public float maxHunger = 100f;
 	public float hungerDecay = 10f;
 

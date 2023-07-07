@@ -27,9 +27,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5489185712194804733}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.21, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.9056604, g: 0.004271993, b: 0.004271993, a: 1}
+  m_Sprite: {fileID: 300921136, guid: ee19be9f5143aef4aad7d114a0603f60, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -99,15 +99,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0011ab32636cde4d9d7655560896ff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hunger: 100
+  startingKaiju: {fileID: 11400000, guid: 13e4b87173ea06c4a9e1e4c2d53dbfdb, type: 2}
+  kaiju: {fileID: 0}
+  hunger: 0
+  health: 0
+  destructionNeed: 0
   hungerDisplay: {fileID: 0}
-  hungerDecay: 10
-  health: 100
   healthDisplay: {fileID: 0}
-  healthDecayFromHunger: 20
-  destructionNeed: 100
   destructionDisplay: {fileID: 0}
-  destructionDecay: 5
   Name: Pochita
   monsterTypeID: 0
   alignment: 0
@@ -126,7 +125,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.25
 --- !u!114 &6490602834010562058
 MonoBehaviour:
   m_ObjectHideFlags: 0

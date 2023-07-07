@@ -1423,7 +1423,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: -1
+          m_IntArgument: -5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1900,49 +1900,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5489185712194804721, guid: ecae37449cf020c4bb71f73566d58d6b, type: 3}
-      propertyPath: m_Radius
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 5489185712194804732, guid: ecae37449cf020c4bb71f73566d58d6b, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 300921136, guid: ee19be9f5143aef4aad7d114a0603f60, type: 3}
-    - target: {fileID: 5489185712194804732, guid: ecae37449cf020c4bb71f73566d58d6b, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5489185712194804732, guid: ecae37449cf020c4bb71f73566d58d6b, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5489185712194804732, guid: ecae37449cf020c4bb71f73566d58d6b, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5489185712194804733, guid: ecae37449cf020c4bb71f73566d58d6b, type: 3}
       propertyPath: m_Name
       value: Kaijun
       objectReference: {fileID: 0}
     - target: {fileID: 5489185712194804734, guid: ecae37449cf020c4bb71f73566d58d6b, type: 3}
-      propertyPath: kaiju
+      propertyPath: allKaiju.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5489185712194804734, guid: ecae37449cf020c4bb71f73566d58d6b, type: 3}
+      propertyPath: allKaiju.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 13e4b87173ea06c4a9e1e4c2d53dbfdb, type: 2}
+    - target: {fileID: 5489185712194804734, guid: ecae37449cf020c4bb71f73566d58d6b, type: 3}
+      propertyPath: allKaiju.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2a72117e1f00f2c4cae778134461bb1a, type: 2}
     - target: {fileID: 5489185712194804735, guid: ecae37449cf020c4bb71f73566d58d6b, type: 3}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5489185712194804735, guid: ecae37449cf020c4bb71f73566d58d6b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5489185712194804735, guid: ecae37449cf020c4bb71f73566d58d6b, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5489185712194804735, guid: ecae37449cf020c4bb71f73566d58d6b, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5489185712194804735, guid: ecae37449cf020c4bb71f73566d58d6b, type: 3}
       propertyPath: m_LocalPosition.x
