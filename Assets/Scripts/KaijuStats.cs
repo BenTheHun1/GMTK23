@@ -60,4 +60,16 @@ public class KaijuStats : MonoBehaviour
 		}
 	}
 
+	public void TriggerEvolution()
+	{
+		if (alignment >= 0f)
+		{
+			monsterTypeID++;
+		}
+		if (alignment < 0f)
+		{
+			monsterTypeID--;
+		}
+	}
+
 }
