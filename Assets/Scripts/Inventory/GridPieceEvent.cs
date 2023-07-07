@@ -41,10 +41,7 @@ public class GridPieceEvent : MonoBehaviour,
         {
             Vector3 mousePos = Mouse.current.position.ReadValue();
             itemImageTransform.position = new Vector3(mousePos.x, mousePos.y, itemImageTransform.position.z);
-            if (!InventoryController.main.isHidden)
-                gridImage.color = gridColor;
-            else
-                gridImage.color = new Color(0, 0, 0, 0);
+            gridImage.color = gridColor;
         }
     }
 
@@ -85,6 +82,7 @@ public class GridPieceEvent : MonoBehaviour,
             isSelected = true;
             InventoryController.main.isDragging = isSelected;
             gridImage.transform.SetSiblingIndex(1);
+            gridImage.GetComponentInChildren<CanvasGroup>().alpha = 0;
             InventoryController.main.activeInventoryID = inventoryImageID;
             InventoryController.main.activeSiblingIndex = 1;
         }
@@ -101,14 +99,10 @@ public class GridPieceEvent : MonoBehaviour,
         }
         isSelected = false;
         InventoryController.main.isDragging = isSelected;
-        //If the inventory is hidden, put the grid piece back in its parent and set the right color
-        if (InventoryController.main.isHidden)
-        {
-            gridImage.transform.SetParent(parentUI.transform);
-            gridImage.color = gridColor;
-            InventoryController.main.isHidden = false;
-        }
+        gridImage.transform.SetParent(parentUI.transform);
+        gridImage.color = gridColor;
         gridImage.transform.SetSiblingIndex(siblingIndex);
+        gridImage.GetComponentInChildren<CanvasGroup>().alpha = 1;
         InventoryController.main.activeSiblingIndex = -1;
         itemImageTransform.anchoredPosition = originalPosition;
     }

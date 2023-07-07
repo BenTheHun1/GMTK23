@@ -18,7 +18,7 @@ public class InventoryController : MonoBehaviour
     private PlayerControlSystem playerControls;
     private bool isInventoryActive;
 
-    internal bool isDragging, isHidden, hasSuccessfulInteraction;
+    internal bool isDragging, hasSuccessfulInteraction;
     internal int activeInventoryID, activeSiblingIndex;
 
     public static InventoryController main;
@@ -29,7 +29,6 @@ public class InventoryController : MonoBehaviour
         playerControls = new PlayerControlSystem();
         playerControls.Player.Inventory.performed += _ => ToggleInventory();
         isDragging = false;
-        isHidden = false;
         hasSuccessfulInteraction = false;
     }
 
@@ -40,7 +39,11 @@ public class InventoryController : MonoBehaviour
         activeInventoryID = -1;
         activeSiblingIndex = -1;
 
-        GameData.AddToInventory(new Item(-1, "TestItem", "This is a test item.", 1, testSprite));
+        GameData.AddToInventory(new Item(0, "TestItem", "This is a test item.", 1, testSprite));
+        GameData.AddToInventory(new Item(0, "TestItem", "This is a test item.", 1, testSprite));
+        GameData.AddToInventory(new Item(0, "TestItem", "This is a test item.", 1, testSprite));
+        GameData.AddToInventory(new Item(0, "TestItem", "This is a test item.", 1, testSprite));
+        GameData.AddToInventory(new Item(0, "TestItem", "This is a test item.", 1, testSprite));
     }
 
     private void OnEnable()
@@ -92,6 +95,8 @@ public class InventoryController : MonoBehaviour
             imageGrid[counter].sprite = i.itemImage;
             imageGrid[counter].color = i.imageColor;
             imageGrid[counter].gameObject.GetComponentInParent<GridPieceEvent>().SetInventoryID(i.ID);
+            imageGrid[counter].GetComponentInChildren<TextMeshProUGUI>().alpha = 1;
+            imageGrid[counter].GetComponentInChildren<TextMeshProUGUI>().text = i.quantity.ToString();
             counter++;
         }
     }
@@ -102,6 +107,7 @@ public class InventoryController : MonoBehaviour
         {
             i.sprite = null;
             i.color = new Color(0, 0, 0, 0);
+            i.GetComponentInChildren<TextMeshProUGUI>().alpha = 0;
         }
     }
 
@@ -113,17 +119,13 @@ public class InventoryController : MonoBehaviour
             GameData.RemoveFromInventory(activeInventoryID);
             //Clear the inventory display so that it can be updated
             ClearInventoryDisplay();
-            //Make sure the inventory is inactive
-            isInventoryActive = false;
             hasSuccessfulInteraction = false;
         }
 
-        ToggleAnimation();
-
-        //Create the inventory display again with the updated information
+        //Create the inventory refresh with the updated information
         if (isInventoryActive)
-        {
             DisplayInventory();
-        }
     }
+
+    public bool IsInventoryActive() => isInventoryActive;
 }
