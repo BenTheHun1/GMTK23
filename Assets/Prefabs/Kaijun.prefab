@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5489185712194804734}
   - component: {fileID: 5489185712194804721}
   - component: {fileID: 6490602834010562058}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Kaijun
-  m_TagString: Untagged
+  m_TagString: Kaiju
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,3 +139,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad2f9d7348c00f54f88a17d4df32d5a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hoverColor: {r: 0, g: 0, b: 0, a: 0}
