@@ -15,6 +15,8 @@ public class Timer : MonoBehaviour
     void Start()
     {
         DisplayCurrentDateTime();
+        TimeSpan test = new TimeSpan(0, 0, 0, 10);
+        StartCountdown(test);
     }
 
     // Update is called once per frame
@@ -35,8 +37,9 @@ public class Timer : MonoBehaviour
 
     public void CompareDateTime()
     {
-        if (DateTime.Compare(countdownTime, GetDateTime()) >= 0)
+        if (DateTime.Compare(countdownTime, GetDateTime()) <= 0)
         {
+            Debug.Log("prefs" + GetBoolFromPrefs());
             StopCountdown();
         }
     }
@@ -45,13 +48,22 @@ public class Timer : MonoBehaviour
     public DateTime StartCountdown(TimeSpan duration)
     {
         setTimer = true;
-        return countdownTime = GetDateTime().Add(duration);
+        countdownTime = GetDateTime().Add(duration);
+        SetPlayerPrefs();
+        return countdownTime;
     }
 
     public void StopCountdown()
     {
         setTimer = false;
         Debug.Log("timer out");
+    }
+
+
+    public void SetPlayerPrefs()
+    {
+        PlayerPrefs.SetString("CountdownTime", countdownTime.ToString());
+        PlayerPrefs.SetString("TimerBool", setTimer.ToString());
     }
 
 
@@ -63,5 +75,25 @@ public class Timer : MonoBehaviour
     public void DisplayCountdownTime()
     {
         Debug.Log(countdownTime.ToString());
+    }
+
+
+    public DateTime GetTimeFromPrefs()
+    {
+        DateTime.TryParse(PlayerPrefs.GetString("CountdownTime"), out countdownTime);
+        return countdownTime;
+    }
+
+    public bool GetBoolFromPrefs()
+    {
+        if (PlayerPrefs.GetString("TimerBool").Equals("false"))
+        {
+            setTimer = false;
+        }
+        else
+        {
+            setTimer = true;
+        }
+        return setTimer;
     }
 }
