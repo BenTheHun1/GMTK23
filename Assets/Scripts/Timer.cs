@@ -9,7 +9,7 @@ public class Timer : MonoBehaviour
     [SerializeField]
     private DateTime now,
         countdownTime;
-
+    private TimeSpan timeLeft;
     //is timer running
     private bool setTimer = false;
 
@@ -88,6 +88,12 @@ public class Timer : MonoBehaviour
     public void DisplayCountdownTime()
     {
         clock.SetText(countdownTime.ToString());
+    }
+
+    public void DisplayTimeLeft()
+    {
+        timeLeft = countdownTime.Subtract(DateTime.Now);
+        clock.SetText(timeLeft.ToString());
     }
 
     //gets countdown time value from playerprefs

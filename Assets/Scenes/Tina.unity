@@ -2127,6 +2127,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5817823472713708028, guid: e6a6161641b296b469146e7a3e0a5e8c, type: 3}
+      propertyPath: clock
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5817823472713708029, guid: e6a6161641b296b469146e7a3e0a5e8c, type: 3}
       propertyPath: m_RootOrder
       value: 0
