@@ -371,7 +371,11 @@ MonoBehaviour:
   - {fileID: 6287881262142506551}
   - {fileID: 6287881260192947059}
   - {fileID: 6287881261274959133}
-  testSprite: {fileID: 0}
+  testItems:
+  - {fileID: 11400000, guid: 3657298b20b96e448b4e481761325611, type: 2}
+  - {fileID: 11400000, guid: 3657298b20b96e448b4e481761325611, type: 2}
+  - {fileID: 11400000, guid: 3657298b20b96e448b4e481761325611, type: 2}
+  - {fileID: 11400000, guid: 3657298b20b96e448b4e481761325611, type: 2}
   inventoryHiddenPos: 750
   inventoryDisplayedPos: 80
   inventoryAnimationDuration: 0.5

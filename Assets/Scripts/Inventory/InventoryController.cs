@@ -8,7 +8,7 @@ public class InventoryController : MonoBehaviour
 {
     [SerializeField] private RectTransform inventoryUI;
     [SerializeField] private Image[] imageGrid;
-    [SerializeField] private SpriteRenderer testSprite;
+    [SerializeField] private Item[] testItems;
 
     [SerializeField] private float inventoryHiddenPos;
     [SerializeField] private float inventoryDisplayedPos;
@@ -22,6 +22,8 @@ public class InventoryController : MonoBehaviour
     internal int activeInventoryID;
 
     public static InventoryController main;
+
+    private bool transitionActive = false;
 
     private void Awake()
     {
@@ -38,12 +40,9 @@ public class InventoryController : MonoBehaviour
         isInventoryActive = false;
         activeInventoryID = -1;
 
-        GameData.AddToInventory(new Item(0, "TestItem", "This is a test item.", 2, testSprite));
-        GameData.AddToInventory(new Item(1, "TestItem", "This is a test item.", 2, testSprite));
-        GameData.AddToInventory(new Item(2, "TestItem", "This is a test item.", 3, testSprite));
-        GameData.AddToInventory(new Item(3, "TestItem", "This is a test item.", 4, testSprite));
-        GameData.AddToInventory(new Item(4, "TestItem", "This is a test item.", 5, testSprite));
-        GameData.AddToInventory(new Item(5, "TestItem", "This is a test item.", 6, testSprite));
+        //Test values for the inventory
+        foreach(var testItem in testItems)
+            GameData.AddToInventory(testItem);
     }
 
     private void OnEnable()
@@ -56,6 +55,9 @@ public class InventoryController : MonoBehaviour
         playerControls.Disable();
     }
 
+    /// <summary>
+    /// Toggles whether the inventory is active or hidden.
+    /// </summary>
     public void ToggleInventory()
     {
         isInventoryActive = !isInventoryActive;
@@ -71,7 +73,7 @@ public class InventoryController : MonoBehaviour
         }
 
         Debug.Log("Inventory Active: " + isInventoryActive);
-        ToggleAnimation();
+        ToggleInventoryAnimation();
 
         //Display all of the items in the inventory
         if (isInventoryActive)
@@ -81,26 +83,39 @@ public class InventoryController : MonoBehaviour
             activeInventoryID = -1;
     }
 
-    private void ToggleAnimation()
+    /// <summary>
+    /// Toggles the inventory UI animation.
+    /// </summary>
+    private void ToggleInventoryAnimation()
     {
-        LeanTween.moveX(inventoryUI, isInventoryActive? inventoryDisplayedPos : inventoryHiddenPos, inventoryAnimationDuration).setEase(inventoryEaseType);
+        if (!transitionActive)
+        {
+            transitionActive = true;
+            LeanTween.moveX(inventoryUI, isInventoryActive ? inventoryDisplayedPos : inventoryHiddenPos, inventoryAnimationDuration).setEase(inventoryEaseType).setOnComplete(() => transitionActive = false);
+        }
     }
 
+    /// <summary>
+    /// Takes the game data's inventory information and displays it in the game's UI.
+    /// </summary>
     private void DisplayInventory()
     {
         int counter = 0;
         foreach (var i in GameData.inventory)
         {
 
-            imageGrid[counter].sprite = i.itemImage;
-            imageGrid[counter].color = i.imageColor;
-            imageGrid[counter].gameObject.GetComponentInParent<GridPieceEvent>().SetInventoryID(i.ID);
+            imageGrid[counter].sprite = i.itemData.itemImage;
+            imageGrid[counter].color = i.itemData.imageColor;
+            imageGrid[counter].gameObject.GetComponentInParent<GridPieceEvent>().SetInventoryID(i.itemData.ID);
             imageGrid[counter].GetComponentInChildren<TextMeshProUGUI>().alpha = 1;
             imageGrid[counter].GetComponentInChildren<TextMeshProUGUI>().text = i.quantity.ToString();
             counter++;
         }
     }
 
+    /// <summary>
+    /// Clears the inventory visual display.
+    /// </summary>
     private void ClearInventoryDisplay()
     {
         foreach (var i in imageGrid)
@@ -111,6 +126,9 @@ public class InventoryController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Checks to see if the item dragged by the player has successfully interacted with something.
+    /// </summary>
     public void CheckSuccessfulInteraction()
     {
         if (hasSuccessfulInteraction)
