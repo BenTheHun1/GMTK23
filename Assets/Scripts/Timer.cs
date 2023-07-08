@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Timer : MonoBehaviour
 {
@@ -11,12 +12,14 @@ public class Timer : MonoBehaviour
 
     private bool setTimer = false;
 
+    public TMP_Text clock;
+
     // Start is called before the first frame update
     void Start()
     {
-        DisplayCurrentDateTime();
-        TimeSpan test = new TimeSpan(0, 0, 0, 10);
-        StartCountdown(test);
+        //DisplayCurrentDateTime();
+        //TimeSpan test = new TimeSpan(0, 0, 0, 10);
+        //StartCountdown(test);
     }
 
     // Update is called once per frame
@@ -39,7 +42,6 @@ public class Timer : MonoBehaviour
     {
         if (DateTime.Compare(countdownTime, GetDateTime()) <= 0)
         {
-            Debug.Log("prefs" + GetBoolFromPrefs());
             StopCountdown();
         }
     }
@@ -50,6 +52,7 @@ public class Timer : MonoBehaviour
         setTimer = true;
         countdownTime = GetDateTime().Add(duration);
         SetPlayerPrefs();
+        DisplayCountdownTime();
         return countdownTime;
     }
 
@@ -69,12 +72,12 @@ public class Timer : MonoBehaviour
 
     public void DisplayCurrentDateTime()
     {
-        Debug.Log(DateTime.Now.ToString());
+        clock.SetText(DateTime.Now.ToString());
     }
 
     public void DisplayCountdownTime()
     {
-        Debug.Log(countdownTime.ToString());
+        clock.SetText(countdownTime.ToString());
     }
 
 
