@@ -155,6 +155,12 @@ public class KaijuStats : MonoBehaviour
 		LoadHat(allHats[0]);
 	}
 
-
-
+	public void Destruction()
+	{
+		destructionNeed += 5f;
+		if (destructionNeed > kaiju.maxDestructionNeed)
+		{
+			destructionNeed = kaiju.maxDestructionNeed;
+		}
+	}
 }
