@@ -88,7 +88,7 @@ public class InventoryController : MonoBehaviour
     /// </summary>
     private void ToggleInventoryAnimation()
     {
-        if (!transitionActive)
+        if (!transitionActive && !ShopController.main.IsShopActive())
         {
             transitionActive = true;
             LeanTween.moveX(inventoryUI, isInventoryActive ? inventoryDisplayedPos : inventoryHiddenPos, inventoryAnimationDuration).setEase(inventoryEaseType).setOnComplete(() => transitionActive = false);

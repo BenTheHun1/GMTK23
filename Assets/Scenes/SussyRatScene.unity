@@ -1599,6 +1599,10 @@ PrefabInstance:
       propertyPath: testSprite
       value: 
       objectReference: {fileID: 526025099}
+    - target: {fileID: 1434107541135062673, guid: 8216b965ce8603347b771e715613264f, type: 3}
+      propertyPath: testItems.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1434107541135062674, guid: 8216b965ce8603347b771e715613264f, type: 3}
       propertyPath: m_Name
       value: GameUI
@@ -2224,6 +2228,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8337427134537273551, guid: 216ffaab6f901e347a8d029a3d4aa919, type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8337427134537273551, guid: 216ffaab6f901e347a8d029a3d4aa919, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8948133655783978408, guid: 216ffaab6f901e347a8d029a3d4aa919, type: 3}
