@@ -186,12 +186,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingKaiju: {fileID: 11400000, guid: 13e4b87173ea06c4a9e1e4c2d53dbfdb, type: 2}
   kaiju: {fileID: 0}
-  hunger: 0
-  health: 0
-  destructionNeed: 0
-  Name: Pochita
-  monsterTypeID: 0
-  alignment: 0
   allKaiju:
   - {fileID: 11400000, guid: 2a72117e1f00f2c4cae778134461bb1a, type: 2}
   - {fileID: 11400000, guid: 38b0643a9e15dce4984106e063655990, type: 2}
@@ -202,7 +196,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5b7f117e7a41e9c409097c25b30f05d9, type: 2}
   - {fileID: 11400000, guid: e0d3f76bfa664ea4d98b5ab621f4c0de, type: 2}
   - {fileID: 11400000, guid: 1c7ef2049e39a2f4c8532327d21fdc5f, type: 2}
+  hunger: 0
+  health: 0
+  destructionNeed: 0
+  Name: Pochita
+  monsterTypeID: 0
+  alignment: 0
   curHat: {fileID: 0}
+  allHats: []
 --- !u!58 &5489185712194804721
 CircleCollider2D:
   m_ObjectHideFlags: 0
