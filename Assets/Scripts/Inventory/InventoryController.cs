@@ -19,7 +19,7 @@ public class InventoryController : MonoBehaviour
     private bool isInventoryActive;
 
     internal bool isDragging, hasSuccessfulInteraction;
-    internal int activeInventoryID, activeSiblingIndex;
+    internal int activeInventoryID;
 
     public static InventoryController main;
 
@@ -37,13 +37,13 @@ public class InventoryController : MonoBehaviour
     {
         isInventoryActive = false;
         activeInventoryID = -1;
-        activeSiblingIndex = -1;
 
-        GameData.AddToInventory(new Item(0, "TestItem", "This is a test item.", 1, testSprite));
-        GameData.AddToInventory(new Item(0, "TestItem", "This is a test item.", 1, testSprite));
-        GameData.AddToInventory(new Item(0, "TestItem", "This is a test item.", 1, testSprite));
-        GameData.AddToInventory(new Item(0, "TestItem", "This is a test item.", 1, testSprite));
-        GameData.AddToInventory(new Item(0, "TestItem", "This is a test item.", 1, testSprite));
+        GameData.AddToInventory(new Item(0, "TestItem", "This is a test item.", 2, testSprite));
+        GameData.AddToInventory(new Item(1, "TestItem", "This is a test item.", 2, testSprite));
+        GameData.AddToInventory(new Item(2, "TestItem", "This is a test item.", 3, testSprite));
+        GameData.AddToInventory(new Item(3, "TestItem", "This is a test item.", 4, testSprite));
+        GameData.AddToInventory(new Item(4, "TestItem", "This is a test item.", 5, testSprite));
+        GameData.AddToInventory(new Item(5, "TestItem", "This is a test item.", 6, testSprite));
     }
 
     private void OnEnable()
@@ -56,7 +56,7 @@ public class InventoryController : MonoBehaviour
         playerControls.Disable();
     }
 
-    private void ToggleInventory()
+    public void ToggleInventory()
     {
         isInventoryActive = !isInventoryActive;
 
