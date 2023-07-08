@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2fc3976fc16708439a788293ab4b3db, type: 3}
-  m_Name: -1 Herbivore
+  m_Name: -2 Herbivore
   m_EditorClassIdentifier: 
-  id: -1
+  id: -2
   maxHunger: 70
   hungerDecay: 5
   maxHealth: 100
   healthDecayFromHunger: 50
   maxDestructionNeed: 40
   destructionDecay: 10
-  sprite: {fileID: -760529687, guid: ee19be9f5143aef4aad7d114a0603f60, type: 3}
-  typeName: Herbivore 1
+  sprite: {fileID: -367427728, guid: ee19be9f5143aef4aad7d114a0603f60, type: 3}
+  typeName: Herbivore 2

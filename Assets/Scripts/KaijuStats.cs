@@ -87,7 +87,7 @@ public class KaijuStats : MonoBehaviour
 
 	public void TriggerEvolution()
 	{
-		if (alignment >= 0)
+		if (alignment > 0)
 		{
 			monsterTypeID++;
 		}
@@ -101,6 +101,7 @@ public class KaijuStats : MonoBehaviour
 			if (k.id == monsterTypeID)
 			{
 				LoadKaiju(k);
+				break;
 			}
 		}
 	}
