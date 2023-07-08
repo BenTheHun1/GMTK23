@@ -20,7 +20,7 @@ public class KaijuStats : MonoBehaviour
 
 	private SpriteRenderer hatObject;
 	[Tooltip("Current equipped Hat.")] public Hat curHat;
-	public Hat[] allHats;
+	[Tooltip("All possible equiqabble hats.")] public Hat[] allHats;
 
 
 	// Start is called before the first frame update
@@ -32,7 +32,11 @@ public class KaijuStats : MonoBehaviour
 		
 		hatObject = transform.GetChild(0).GetComponent<SpriteRenderer>();
 
-		hunger = startingKaiju.maxHunger;
+		hunger = startingKaiju.maxHunger; //Otherwise starts at 0
+		health = startingKaiju.maxHealth;
+		destructionNeed = startingKaiju.maxDestructionNeed;
+
+		FindObjectOfType<Timer>().StartCountdown(new System.TimeSpan(1, 0, 0));
 		LoadKaiju(startingKaiju);
 	}
 
@@ -52,18 +56,16 @@ public class KaijuStats : MonoBehaviour
 
 		GetComponent<SpriteRenderer>().sprite = kaiju.sprite;
 
-		if (hunger > kaiju.maxHunger)
+		if (hunger > kaiju.maxHunger) //If its bigger than the max we want to reduce it to the max value
 		{
 			hunger = kaiju.maxHunger;
 		}
 
-		health = kaiju.maxHealth;
 		if (health > kaiju.maxHealth)
 		{
 			health = kaiju.maxHealth;
 		}
 
-		destructionNeed = kaiju.maxDestructionNeed;
 		if (destructionNeed > kaiju.maxDestructionNeed)
 		{
 			destructionNeed = kaiju.maxDestructionNeed;
@@ -71,7 +73,7 @@ public class KaijuStats : MonoBehaviour
 
 		if (curHat)
 		{
-			LoadHat(curHat);
+			LoadHat(curHat); //to ensure the hat is positioned correctly
 		}
 	}
 
@@ -129,9 +131,11 @@ public class KaijuStats : MonoBehaviour
 		}
 	}
 
-	public void GiveHimDaHat()
+	public void GiveHimDaHat() // Temp
 	{
 		LoadHat(allHats[0]);
 	}
+
+
 
 }
