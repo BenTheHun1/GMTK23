@@ -20,4 +20,5 @@ MonoBehaviour:
   maxDestructionNeed: 200
   destructionDecay: 40
   sprite: {fileID: -1155423674, guid: ee19be9f5143aef4aad7d114a0603f60, type: 3}
+  hatPoint: {x: 0, y: 0.17, z: 0}
   typeName: Carnivore 1

@@ -16,5 +16,7 @@ public class Kaiju : ScriptableObject
 	public float destructionDecay = 20f;
 
 	public Sprite sprite;
+	public Vector3 hatPoint;
 	public string typeName;
+
 }

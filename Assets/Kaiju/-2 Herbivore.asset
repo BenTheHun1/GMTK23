@@ -20,4 +20,5 @@ MonoBehaviour:
   maxDestructionNeed: 40
   destructionDecay: 10
   sprite: {fileID: -367427728, guid: ee19be9f5143aef4aad7d114a0603f60, type: 3}
+  hatPoint: {x: 0, y: 0.17, z: 0}
   typeName: Herbivore 2

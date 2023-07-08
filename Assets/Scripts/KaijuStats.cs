@@ -6,16 +6,18 @@ using UnityEngine.UI;
 
 public class KaijuStats : MonoBehaviour
 {
-	public Kaiju startingKaiju;
-	public Kaiju kaiju;
-	public float hunger, health, destructionNeed;
-	public Image hungerDisplay, healthDisplay, destructionDisplay;
+	[Tooltip("The initial Kaiju.")] public Kaiju startingKaiju;
+	[Tooltip("The current Kaiju.")] public Kaiju kaiju;
+	[Tooltip("Stats")] public float hunger, health, destructionNeed;
+	private Image hungerDisplay, healthDisplay, destructionDisplay;
 
-	public string Name;
-	public int monsterTypeID; //use to display the right sprite?
-	public int alignment; //positive is carnivore, negative is herbivore
+	[Tooltip("The Kaiju's Name.")] public string Name; //Add way to display and edit
+	[Tooltip("The Kaiju's ID")] public int monsterTypeID;
+	[Tooltip("Current alignment. Positive is carnivore, negative is herbivore.")] public int alignment;
 
-	public Kaiju[] allKaiju;
+	[Tooltip("All possible Kaiju (with different IDs).")] public Kaiju[] allKaiju;
+
+	[Tooltip("Current Hat.")] public GameObject curHat;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +25,7 @@ public class KaijuStats : MonoBehaviour
 		hungerDisplay = GameObject.Find("Hunger Meter").GetComponent<Image>();
 		healthDisplay = GameObject.Find("Health Meter").GetComponent<Image>();
 		destructionDisplay = GameObject.Find("Destruction Meter").GetComponent<Image>();
-
+		curHat = transform.GetChild(0).gameObject;
 		hunger = startingKaiju.maxHunger;
 		LoadKaiju(startingKaiju);
 	}
@@ -50,6 +52,8 @@ public class KaijuStats : MonoBehaviour
 		{
 			destructionNeed = kaiju.maxDestructionNeed;
 		}
+
+		curHat.transform.localPosition = kaiju.hatPoint;
 	}
 
     // Update is called once per frame
@@ -58,16 +62,16 @@ public class KaijuStats : MonoBehaviour
 		if (hunger > 0f)
 		{
 			hunger -= 0.1f * Time.deltaTime * kaiju.hungerDecay;
-			hungerDisplay.fillAmount = hunger / 100f;
+			hungerDisplay.fillAmount = hunger / kaiju.maxHunger;
 		}
 		else
 		{
 			health -= 0.1f * Time.deltaTime * kaiju.healthDecayFromHunger;
-			healthDisplay.fillAmount = health / 100f;
+			healthDisplay.fillAmount = health / kaiju.maxHealth;
 		}
 
 		destructionNeed -= 0.1f * Time.deltaTime * kaiju.destructionDecay;
-		destructionDisplay.fillAmount = destructionNeed / 100f;
+		destructionDisplay.fillAmount = destructionNeed / kaiju.maxDestructionNeed;
 
 		if (health <= 0f)
 		{
