@@ -30,21 +30,25 @@ public class FashionShow : MonoBehaviour
 
 	public void StartShow()
 	{
-		float sexy = kaiju.kaiju.sexiness + kaiju.curHat.sexiness;
+		float sexy = kaiju.kaiju.sexiness + (kaiju.curHat ? kaiju.curHat.sexiness : 0f);
 		if (sexy >= curThreshold)
 		{
-			//1st place
-			GameData.currency += (int)(curThreshold * 1000);
+			Debug.Log("You got first place!");
+			FindObjectOfType<ShopController>().UpdateCurrency((int)(curThreshold * 1000));
 		}
 		else if (sexy >= curThreshold * 0.9f)
 		{
-			//2nd place
-			GameData.currency += (int)(curThreshold * 750);
+			Debug.Log("You got second place!");
+			FindObjectOfType<ShopController>().UpdateCurrency((int)(curThreshold * 750));
 		}
-		else if (sexy >= curThreshold * 0.8f)
+		else if (sexy >= curThreshold * 0.8f) 
 		{
-			//3rd place
-			GameData.currency += (int)(curThreshold * 500);
+			Debug.Log("You got third place!");
+			FindObjectOfType<ShopController>().UpdateCurrency((int)(curThreshold * 500));
+		}
+		else
+		{
+			Debug.Log("You lost...");
 		}
 		curThreshold += 5f;
 	}
