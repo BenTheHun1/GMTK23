@@ -22,15 +22,23 @@ public class KaijuStats : MonoBehaviour
 	[Tooltip("Current equipped Hat.")] public Hat curHat;
 	[Tooltip("All possible equiqabble hats.")] public Hat[] allHats;
 
+	public AppleMinigame appleMiniGame;
+
 
 	// Start is called before the first frame update
 	void Start()
-    {
+	{
+		if (appleMiniGame)
+		{
+			appleMiniGame.gameObject.SetActive(false);
+		}
+
 		hungerDisplay = GameObject.Find("Hunger Meter").GetComponent<Image>();
 		healthDisplay = GameObject.Find("Health Meter").GetComponent<Image>();
 		destructionDisplay = GameObject.Find("Destruction Meter").GetComponent<Image>();
 		
 		hatObject = transform.GetChild(0).GetComponent<SpriteRenderer>();
+		hatObject.color = new Color(0, 0, 0, 0);
 
 		hunger = startingKaiju.maxHunger; //Otherwise starts at 0
 		health = startingKaiju.maxHealth;
@@ -40,11 +48,13 @@ public class KaijuStats : MonoBehaviour
 		LoadKaiju(startingKaiju);
 	}
 
-	void LoadHat(Hat newHat)
+	public void LoadHat(Hat newHat)
 	{
 		curHat = newHat;
+		GameData.currentEquipment = curHat;
 
 		hatObject.sprite = curHat.sprite;
+		hatObject.color = Color.white;
 
 		hatObject.transform.localPosition = kaiju.hatPoint;
 
@@ -152,7 +162,7 @@ public class KaijuStats : MonoBehaviour
 
 	public void GiveHimDaHat() // Temp
 	{
-		LoadHat(allHats[0]);
+		//LoadHat(allHats[0]);
 	}
 
 	public void Destruction()
@@ -162,5 +172,23 @@ public class KaijuStats : MonoBehaviour
 		{
 			destructionNeed = kaiju.maxDestructionNeed;
 		}
+	}
+
+	public void StartFruitGame()
+	{
+		hungerDisplay.transform.parent.GetComponent<Canvas>().enabled = false;
+		gameObject.GetComponent<SpriteRenderer>().enabled = false;
+		appleMiniGame.gameObject.SetActive(true);
+		FindObjectOfType<AppleMinigameControls>().GetComponent<SpriteRenderer>().sprite = kaiju.sprite;
+		FindObjectOfType<AppleMinigameControls>().speed = kaiju.speed;
+		appleMiniGame.StartMinigame();
+
+	}
+
+	public void EndFruitGame()
+	{
+		hungerDisplay.transform.parent.GetComponent<Canvas>().enabled = true;
+		gameObject.GetComponent<SpriteRenderer>().enabled = true;
+		appleMiniGame.gameObject.SetActive(false);
 	}
 }

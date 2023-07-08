@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20f970e67dd94564893c4677741d1fdf, type: 3}
   m_Name: Top Hat
   m_EditorClassIdentifier: 
+  name: Top Hat
+  description: A simple hat for your dapper needs.
   sexiness: 5
+  price: 500
   sprite: {fileID: 21300000, guid: 411122a58e40b0e44bbdb2dc89ce448d, type: 3}
+  available: 1

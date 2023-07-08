@@ -10,7 +10,7 @@ public class AppleMinigameControls : MonoBehaviour
 {
 
     [SerializeField]
-    private float speed;
+    public float speed;
     private PlayerControlSystem playerCons;
     private Vector2 moveInput;
     private Rigidbody2D rbKaiju;
@@ -20,7 +20,6 @@ public class AppleMinigameControls : MonoBehaviour
     private void Awake()
     {
         mgCode = GetComponentInParent<AppleMinigame>();
-        speed = 5.0f;
         playerCons = new PlayerControlSystem();
         rbKaiju = GetComponent<Rigidbody2D>();
     }
@@ -39,7 +38,7 @@ public class AppleMinigameControls : MonoBehaviour
         {
             moveInput = playerCons.Player.Move.ReadValue<Vector2>();
             moveInput.y = 0f;
-            rbKaiju.velocity = moveInput * speed;
+            rbKaiju.transform.Translate(moveInput * speed * 0.1f);
         }
     }
 

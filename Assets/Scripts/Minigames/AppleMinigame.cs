@@ -15,12 +15,12 @@ public class AppleMinigame : MonoBehaviour
     public int score;
     public TMP_Text scoreText,
         timerText;
+	public Item fruit;
 
     // Start is called before the first frame update
     void Start()
     {
         score = 0;
-        StartMinigame();
     }
 
     // Update is called once per frame
@@ -52,7 +52,12 @@ public class AppleMinigame : MonoBehaviour
         timerText.SetText("0");
         timeRemaining = 0;
         spawn = false;
-    }
+		for (int i = 0; i < score; i++)
+		{
+			GameData.AddToInventory(fruit);
+		}
+		FindObjectOfType<KaijuStats>().EndFruitGame();
+	}
 
 
     public void UpdateScore()
