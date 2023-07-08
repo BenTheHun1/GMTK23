@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.5137255, b: 0.5137255, a: 1}
     m_PressedColor: {r: 0.764151, g: 0.16220188, b: 0.16220188, a: 1}
     m_SelectedColor: {r: 0.93725497, g: 0.48235297, b: 0.48235297, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -190,8 +190,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Buy Food
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0bab8146476ad17449a77f88d82d9422, type: 2}
+  m_sharedMaterial: {fileID: -349779636844150428, guid: 0bab8146476ad17449a77f88d82d9422, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

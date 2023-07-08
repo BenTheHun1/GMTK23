@@ -36,7 +36,7 @@ public class UseItemVolume : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("Cursor Is Entering Entity.");
+        //Debug.Log("Cursor Is Entering Entity.");
         if (InventoryController.main.IsInventoryActive())
         {
             isSelected = true;
@@ -46,7 +46,7 @@ public class UseItemVolume : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("Cursor Is Exiting Entity.");
+        //Debug.Log("Cursor Is Exiting Entity.");
         if (InventoryController.main.IsInventoryActive())
         {
             ResetVolume();
@@ -61,7 +61,7 @@ public class UseItemVolume : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     private void CheckUseItem()
     {
-        Debug.Log("Checking For Item Use...");
+        //Debug.Log("Checking For Item Use...");
 
         //If the used volume is hovered over, the right piece is selected, use the item
         if (InventoryController.main.activeInventoryID >= 0 && isSelected)
