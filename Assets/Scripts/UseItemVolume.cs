@@ -67,6 +67,7 @@ public class UseItemVolume : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (InventoryController.main.activeInventoryID >= 0 && isSelected)
         {
             Debug.Log("Current ID: " + InventoryController.main.activeInventoryID);
+            GetComponent<KaijuStats>().GiveKaijuItem(InventoryController.main.activeInventoryID);
             Debug.Log("Item Successfully Used!");
             InventoryController.main.hasSuccessfulInteraction = true;
         }
