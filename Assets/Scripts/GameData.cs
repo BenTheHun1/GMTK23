@@ -67,4 +67,6 @@ public static class GameData
             inventory.RemoveAt(counter);
         }
     }
+
+    public static float GetBGMVolume() => PlayerPrefs.GetFloat("BGMVolume", 0.5f);
 }
