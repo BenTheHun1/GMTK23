@@ -20,7 +20,6 @@ public class KaijuStats : MonoBehaviour
 
 	private SpriteRenderer hatObject;
 	[Tooltip("Current equipped Hat.")] public Hat curHat;
-	[Tooltip("All possible equiqabble hats.")] public Hat[] allHats;
 
 	public AppleMinigame appleMiniGame;
 
@@ -160,11 +159,6 @@ public class KaijuStats : MonoBehaviour
 		}
 	}
 
-	public void GiveHimDaHat() // Temp
-	{
-		//LoadHat(allHats[0]);
-	}
-
 	public void Destruction()
 	{
 		destructionNeed += 5f;
@@ -174,21 +168,19 @@ public class KaijuStats : MonoBehaviour
 		}
 	}
 
-	public void StartFruitGame()
+	public void StartFruitGame(bool startIfTrue)
 	{
-		hungerDisplay.transform.parent.GetComponent<Canvas>().enabled = false;
-		gameObject.GetComponent<SpriteRenderer>().enabled = false;
-		appleMiniGame.gameObject.SetActive(true);
-		FindObjectOfType<AppleMinigameControls>().GetComponent<SpriteRenderer>().sprite = kaiju.sprite;
-		FindObjectOfType<AppleMinigameControls>().speed = kaiju.speed;
-		appleMiniGame.StartMinigame();
+		hungerDisplay.transform.parent.GetComponent<Canvas>().enabled = !startIfTrue;
+		gameObject.GetComponent<SpriteRenderer>().enabled = !startIfTrue;
+		appleMiniGame.gameObject.SetActive(startIfTrue);
+		FindObjectOfType<ShopController>().GetComponent<Canvas>().enabled = !startIfTrue;
+		FindObjectOfType<InventoryController>().GetComponent<Canvas>().enabled = !startIfTrue;
+		if (startIfTrue)
+		{
+			FindObjectOfType<AppleMinigameControls>().GetComponent<SpriteRenderer>().sprite = kaiju.sprite;
+			FindObjectOfType<AppleMinigameControls>().speed = kaiju.speed;
+			appleMiniGame.StartMinigame();
+		}
 
-	}
-
-	public void EndFruitGame()
-	{
-		hungerDisplay.transform.parent.GetComponent<Canvas>().enabled = true;
-		gameObject.GetComponent<SpriteRenderer>().enabled = true;
-		appleMiniGame.gameObject.SetActive(false);
 	}
 }

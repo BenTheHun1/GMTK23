@@ -43,6 +43,7 @@ public class AppleMinigame : MonoBehaviour
     public void StartMinigame()
     {
         spawn = true;
+		score = 0;
         timeRemaining = 30.0f;
         StartCoroutine(Spawn());
     }
@@ -56,7 +57,7 @@ public class AppleMinigame : MonoBehaviour
 		{
 			GameData.AddToInventory(fruit);
 		}
-		FindObjectOfType<KaijuStats>().EndFruitGame();
+		FindObjectOfType<KaijuStats>().StartFruitGame(false);
 	}
 
 
