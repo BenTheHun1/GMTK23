@@ -6,5 +6,7 @@ using UnityEngine;
 public class Hat : ScriptableObject
 {
 	public float sexiness = 0f;
+
+	public Sprite sprite;
 	
 }

@@ -8,6 +8,8 @@ public class KaijuStats : MonoBehaviour
 {
 	[Tooltip("The initial Kaiju.")] public Kaiju startingKaiju;
 	[Tooltip("The current Kaiju.")] public Kaiju kaiju;
+	[Tooltip("All possible Kaiju (with different IDs).")] public Kaiju[] allKaiju;
+
 	[Tooltip("Stats")] public float hunger, health, destructionNeed;
 	private Image hungerDisplay, healthDisplay, destructionDisplay;
 
@@ -15,21 +17,33 @@ public class KaijuStats : MonoBehaviour
 	[Tooltip("The Kaiju's ID")] public int monsterTypeID;
 	[Tooltip("Current alignment. Positive is carnivore, negative is herbivore.")] public int alignment;
 
-	[Tooltip("All possible Kaiju (with different IDs).")] public Kaiju[] allKaiju;
 
-	[Tooltip("Current Hat.")] public GameObject curHat;
+	private SpriteRenderer hatObject;
+	[Tooltip("Current equipped Hat.")] public Hat curHat;
+	public Hat[] allHats;
 
-    // Start is called before the first frame update
-    void Start()
+
+	// Start is called before the first frame update
+	void Start()
     {
 		hungerDisplay = GameObject.Find("Hunger Meter").GetComponent<Image>();
 		healthDisplay = GameObject.Find("Health Meter").GetComponent<Image>();
 		destructionDisplay = GameObject.Find("Destruction Meter").GetComponent<Image>();
 		
-		curHat = transform.GetChild(0).gameObject;
+		hatObject = transform.GetChild(0).GetComponent<SpriteRenderer>();
 
 		hunger = startingKaiju.maxHunger;
 		LoadKaiju(startingKaiju);
+	}
+
+	void LoadHat(Hat newHat)
+	{
+		curHat = newHat;
+
+		hatObject.sprite = curHat.sprite;
+
+		hatObject.transform.localPosition = kaiju.hatPoint;
+
 	}
 
 	void LoadKaiju(Kaiju newKaiju)
@@ -55,7 +69,10 @@ public class KaijuStats : MonoBehaviour
 			destructionNeed = kaiju.maxDestructionNeed;
 		}
 
-		curHat.transform.localPosition = kaiju.hatPoint;
+		if (curHat)
+		{
+			LoadHat(curHat);
+		}
 	}
 
     // Update is called once per frame
@@ -110,6 +127,11 @@ public class KaijuStats : MonoBehaviour
 				break;
 			}
 		}
+	}
+
+	public void GiveHimDaHat()
+	{
+		LoadHat(allHats[0]);
 	}
 
 }
