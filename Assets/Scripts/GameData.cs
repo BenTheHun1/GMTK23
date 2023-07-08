@@ -4,6 +4,7 @@ using UnityEngine;
 
 public static class GameData
 {
+    internal static int currency = 1000;
     internal static List<Item> inventory = new List<Item>();
 
     public static void AddToInventory(Item itemData)
