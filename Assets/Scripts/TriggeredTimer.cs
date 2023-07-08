@@ -21,7 +21,7 @@ public class TriggeredTimer : MonoBehaviour
                 timeRemaining -= Time.deltaTime;
                 if (displayTimer)
                 {
-                    timerText.SetText((Mathf.FloorToInt(timeRemaining % 60)).ToString());
+                    timerText.SetText((Mathf.FloorToInt(timeRemaining / 60)).ToString() + ":" + (Mathf.FloorToInt(timeRemaining % 60)).ToString());
                 }
             }
             else
