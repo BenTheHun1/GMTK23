@@ -25,7 +25,9 @@ public class KaijuStats : MonoBehaviour
 		hungerDisplay = GameObject.Find("Hunger Meter").GetComponent<Image>();
 		healthDisplay = GameObject.Find("Health Meter").GetComponent<Image>();
 		destructionDisplay = GameObject.Find("Destruction Meter").GetComponent<Image>();
+		
 		curHat = transform.GetChild(0).gameObject;
+
 		hunger = startingKaiju.maxHunger;
 		LoadKaiju(startingKaiju);
 	}
