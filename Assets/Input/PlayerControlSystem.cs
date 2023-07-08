@@ -853,6 +853,54 @@ public partial class @PlayerControlSystem: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Baskets"",
+            ""id"": ""82171884-ac19-466c-94c3-f70452e4d2a2"",
+            ""actions"": [
+                {
+                    ""name"": ""LeftBasket"",
+                    ""type"": ""Button"",
+                    ""id"": ""0538f91e-a7f5-4046-a0f7-d2e6429116b0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightBasket"",
+                    ""type"": ""Button"",
+                    ""id"": ""5846eece-eb67-4cb4-902b-b2a1e749e422"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""5d237cbd-ae94-4b23-bbd2-2e86419c4df5"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftBasket"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e967ecc9-7e12-449f-8397-8bce3c85ca1c"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightBasket"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -938,6 +986,10 @@ public partial class @PlayerControlSystem: IInputActionCollection2, IDisposable
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        // Baskets
+        m_Baskets = asset.FindActionMap("Baskets", throwIfNotFound: true);
+        m_Baskets_LeftBasket = m_Baskets.FindAction("LeftBasket", throwIfNotFound: true);
+        m_Baskets_RightBasket = m_Baskets.FindAction("RightBasket", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1199,6 +1251,60 @@ public partial class @PlayerControlSystem: IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // Baskets
+    private readonly InputActionMap m_Baskets;
+    private List<IBasketsActions> m_BasketsActionsCallbackInterfaces = new List<IBasketsActions>();
+    private readonly InputAction m_Baskets_LeftBasket;
+    private readonly InputAction m_Baskets_RightBasket;
+    public struct BasketsActions
+    {
+        private @PlayerControlSystem m_Wrapper;
+        public BasketsActions(@PlayerControlSystem wrapper) { m_Wrapper = wrapper; }
+        public InputAction @LeftBasket => m_Wrapper.m_Baskets_LeftBasket;
+        public InputAction @RightBasket => m_Wrapper.m_Baskets_RightBasket;
+        public InputActionMap Get() { return m_Wrapper.m_Baskets; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(BasketsActions set) { return set.Get(); }
+        public void AddCallbacks(IBasketsActions instance)
+        {
+            if (instance == null || m_Wrapper.m_BasketsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_BasketsActionsCallbackInterfaces.Add(instance);
+            @LeftBasket.started += instance.OnLeftBasket;
+            @LeftBasket.performed += instance.OnLeftBasket;
+            @LeftBasket.canceled += instance.OnLeftBasket;
+            @RightBasket.started += instance.OnRightBasket;
+            @RightBasket.performed += instance.OnRightBasket;
+            @RightBasket.canceled += instance.OnRightBasket;
+        }
+
+        private void UnregisterCallbacks(IBasketsActions instance)
+        {
+            @LeftBasket.started -= instance.OnLeftBasket;
+            @LeftBasket.performed -= instance.OnLeftBasket;
+            @LeftBasket.canceled -= instance.OnLeftBasket;
+            @RightBasket.started -= instance.OnRightBasket;
+            @RightBasket.performed -= instance.OnRightBasket;
+            @RightBasket.canceled -= instance.OnRightBasket;
+        }
+
+        public void RemoveCallbacks(IBasketsActions instance)
+        {
+            if (m_Wrapper.m_BasketsActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IBasketsActions instance)
+        {
+            foreach (var item in m_Wrapper.m_BasketsActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_BasketsActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public BasketsActions @Baskets => new BasketsActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -1265,5 +1371,10 @@ public partial class @PlayerControlSystem: IInputActionCollection2, IDisposable
         void OnRightClick(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+    }
+    public interface IBasketsActions
+    {
+        void OnLeftBasket(InputAction.CallbackContext context);
+        void OnRightBasket(InputAction.CallbackContext context);
     }
 }

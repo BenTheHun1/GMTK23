@@ -831,6 +831,54 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Baskets",
+            "id": "82171884-ac19-466c-94c3-f70452e4d2a2",
+            "actions": [
+                {
+                    "name": "LeftBasket",
+                    "type": "Button",
+                    "id": "0538f91e-a7f5-4046-a0f7-d2e6429116b0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RightBasket",
+                    "type": "Button",
+                    "id": "5846eece-eb67-4cb4-902b-b2a1e749e422",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5d237cbd-ae94-4b23-bbd2-2e86419c4df5",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftBasket",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e967ecc9-7e12-449f-8397-8bce3c85ca1c",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightBasket",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
