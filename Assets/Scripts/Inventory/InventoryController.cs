@@ -6,14 +6,13 @@ using TMPro;
 
 public class InventoryController : MonoBehaviour
 {
-    [SerializeField] private RectTransform inventoryUI;
-    [SerializeField] private Image[] imageGrid;
-    [SerializeField] private Item[] testItems;
+    [SerializeField, Tooltip("The main container for the inventory UI.")] private RectTransform inventoryUI;
+    [SerializeField, Tooltip("The images in the inventory grid.")] private Image[] imageGrid;
 
-    [SerializeField] private float inventoryHiddenPos;
-    [SerializeField] private float inventoryDisplayedPos;
-    [SerializeField] private float inventoryAnimationDuration;
-    [SerializeField] private LeanTweenType inventoryEaseType;
+    [SerializeField, Tooltip("The x position for the inventory when hidden.")] private float inventoryHiddenPos;
+    [SerializeField, Tooltip("The x position for the inventory when active.")] private float inventoryDisplayedPos;
+    [SerializeField, Tooltip("The time in seconds for the inventory to move.")] private float inventoryAnimationDuration;
+    [SerializeField, Tooltip("The ease type for the inventory animation.")] private LeanTweenType inventoryEaseType;
 
     private PlayerControlSystem playerControls;
     private bool isInventoryActive;
@@ -39,10 +38,6 @@ public class InventoryController : MonoBehaviour
     {
         isInventoryActive = false;
         activeInventoryID = -1;
-
-        //Test values for the inventory
-        foreach(var testItem in testItems)
-            GameData.AddToInventory(testItem);
     }
 
     private void OnEnable()
@@ -72,7 +67,7 @@ public class InventoryController : MonoBehaviour
             }
         }
 
-        Debug.Log("Inventory Active: " + isInventoryActive);
+        //Debug.Log("Inventory Active: " + isInventoryActive);
         ToggleInventoryAnimation();
 
         //Display all of the items in the inventory

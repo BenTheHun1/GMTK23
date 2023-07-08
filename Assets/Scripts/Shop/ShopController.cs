@@ -16,13 +16,13 @@ public class ShopController : MonoBehaviour
     [SerializeField, Tooltip("The time it takes in seconds to exit the shop menu.")] private float shopExitAnimationDuration;
     [SerializeField, Tooltip("The ease types for the enter / exit animations.")] private LeanTweenType shopEnterEaseType, shopExitEaseType;
 
-    [SerializeField] private float shopFadeAnimationDuration;
-    [SerializeField] private LeanTweenType shopFadeEaseType;
+    [SerializeField, Tooltip("The time it takes in seconds for the main shop to fade in / out.")] private float shopFadeAnimationDuration;
+    [SerializeField, Tooltip("The ease type for the main shop enter / exit animations.")] private LeanTweenType shopFadeEaseType;
 
-    [SerializeField] private float foodShopAnimationDuration;
-    [SerializeField] private LeanTweenType foodShopAnimationEaseType;
-    [SerializeField] private float fadeInLabelDuration;
-    [SerializeField] private LeanTweenType fadeInLabelEaseType;
+    [SerializeField, Tooltip("The time it takes in seconds for the food shop to scale into / out of view.")] private float foodShopAnimationDuration;
+    [SerializeField, Tooltip("The ease types for the food shop enter / exit animations.")] private LeanTweenType foodShopAnimationEaseType;
+    [SerializeField, Tooltip("The time it takes in seconds for the food shop labels to fade in / out.")] private float fadeInLabelDuration;
+    [SerializeField, Tooltip("The ease type for the fade in / out label animations.")] private LeanTweenType fadeInLabelEaseType;
 
     [SerializeField, Tooltip("The list of available shop menus.")] private GameObject[] shopMenus;
 
@@ -34,7 +34,7 @@ public class ShopController : MonoBehaviour
     private bool shopActive = false;
     private bool transitionActive = false;
 
-    private int currentMenuID = (int)ShopType.MAIN;
+    private int currentMenuID = -1;
     private int exitMenuID = -1;
 
     private void Awake()
@@ -70,10 +70,12 @@ public class ShopController : MonoBehaviour
     /// </summary>
     private void ToggleShop()
     {
-        if (!transitionActive && currentMenuID == (int)ShopType.MAIN && !InventoryController.main.IsInventoryActive())
+        if (!transitionActive && currentMenuID <= (int)ShopType.MAIN && !InventoryController.main.IsInventoryActive())
         {
             shopActive = !shopActive;
             transitionActive = true;
+
+            currentMenuID = shopActive ? 0 : -1;
 
             //Move the shop menu on the y-axis when activating
             LeanTween.moveY(mainShopTransform, shopActive ? shopEndPos : shopStartPos, shopActive ? shopEnterAnimationDuration : shopExitAnimationDuration).setEase(shopActive ? shopEnterEaseType : shopExitEaseType)
@@ -114,6 +116,9 @@ public class ShopController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Animates the main shop UI when entering / exiting the menu.
+    /// </summary>
     private void MainShopAnimation()
     {
         transitionActive = true;
@@ -121,6 +126,7 @@ public class ShopController : MonoBehaviour
 
         float delay = 0;
 
+        //Wait for other menus to finish their animations before fading back in
         switch ((ShopType)exitMenuID)
         {
             case ShopType.FOOD:
@@ -128,10 +134,14 @@ public class ShopController : MonoBehaviour
                 break;
         }
 
+        //Fade in / out the main shop menu when entering / exiting
         shopMenus[(int)ShopType.MAIN].GetComponent<CanvasGroup>().alpha = endingAlpha == 0 ? 1 : 0;
         LeanTween.delayedCall(delay, () => LeanTween.alphaCanvas(shopMenus[(int)ShopType.MAIN].GetComponent<CanvasGroup>(), endingAlpha, shopFadeAnimationDuration).setEase(shopFadeEaseType).setOnComplete(() => transitionActive = false));
     }
 
+    /// <summary>
+    /// Animates the food shop UI when entering / exiting the menu.
+    /// </summary>
     private void FoodShopAnimation()
     {
         transitionActive = true;
@@ -142,14 +152,17 @@ public class ShopController : MonoBehaviour
 
         if(currentMenuID == (int)ShopType.FOOD)
         {
+            //When entering the food shop, scale the Y and then fade in the labels
             LeanTween.scaleY(shopMenus[(int)ShopType.FOOD], endingScale, foodShopAnimationDuration).setEase(foodShopAnimationEaseType).setOnComplete(() =>
             LeanTween.alphaCanvas(shopMenus[(int)ShopType.FOOD].GetComponentInChildren<CanvasGroup>(), endingScale, fadeInLabelDuration).setEase(fadeInLabelEaseType).setOnComplete(() => transitionActive = false));
 
+            //Display a default message when transitioning into the food shop
             foreach (var infoDisplay in FindObjectsOfType<ItemInfoDisplay>())
                 infoDisplay.UpdateItemInformation("Purchase food for your Kaiju here.");
         }
         else
         {
+            //When exiting the food shop, fade out the labels and then scale the Y
             LeanTween.alphaCanvas(shopMenus[(int)ShopType.FOOD].GetComponentInChildren<CanvasGroup>(), endingScale, fadeInLabelDuration).setEase(fadeInLabelEaseType).setOnComplete(() =>
             LeanTween.scaleY(shopMenus[(int)ShopType.FOOD], endingScale, foodShopAnimationDuration).setEase(foodShopAnimationEaseType).setOnComplete(() => transitionActive = false));
         }

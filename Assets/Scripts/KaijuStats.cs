@@ -100,6 +100,25 @@ public class KaijuStats : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Give the Kaiju an item and acts accordingly depending on the ID given.
+	/// </summary>
+	/// <param name="itemID">The ID for the item.</param>
+	public void GiveKaijuItem(int itemID)
+    {
+        switch (itemID)
+        {
+			//Apple
+			case 0:
+				Feed(-1);
+				break;
+			//Human
+			case 1:
+				Feed(1);
+				break;
+        }
+    }
+
 	public void Feed(int amount)
 	{
 		hunger += Mathf.Abs(amount);

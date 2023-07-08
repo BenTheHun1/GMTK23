@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35bf2ea05da6f2249b48b31af27322f4, type: 3}
   m_Name: Human
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 1
   name: Human
   description: No idea who this person is.
   price: 100

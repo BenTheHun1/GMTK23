@@ -19,6 +19,7 @@ MonoBehaviour:
   healthDecayFromHunger: 50
   maxDestructionNeed: 200
   destructionDecay: 40
+  sexiness: 15
   sprite: {fileID: 1598315578, guid: ee19be9f5143aef4aad7d114a0603f60, type: 3}
   hatPoint: {x: 0, y: 0.17, z: 0}
   typeName: Carnivore 3
