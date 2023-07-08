@@ -34,17 +34,18 @@ public class FashionShow : MonoBehaviour
 		if (sexy >= curThreshold)
 		{
 			//1st place
-			GameData.currency += 10000;
+			GameData.currency += (int)(curThreshold * 1000);
 		}
 		else if (sexy >= curThreshold * 0.9f)
 		{
 			//2nd place
-			GameData.currency += 7500;
+			GameData.currency += (int)(curThreshold * 750);
 		}
 		else if (sexy >= curThreshold * 0.8f)
 		{
 			//3rd place
-			GameData.currency += 5000;
+			GameData.currency += (int)(curThreshold * 500);
 		}
+		curThreshold += 5f;
 	}
 }
