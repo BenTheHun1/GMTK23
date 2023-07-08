@@ -22,10 +22,17 @@ public class KaijuStats : MonoBehaviour
 	[Tooltip("Current equipped Hat.")] public Hat curHat;
 	[Tooltip("All possible equiqabble hats.")] public Hat[] allHats;
 
+	public AppleMinigame appleMiniGame;
+
 
 	// Start is called before the first frame update
 	void Start()
-    {
+	{
+		if (appleMiniGame)
+		{
+			appleMiniGame.gameObject.SetActive(false);
+		}
+
 		hungerDisplay = GameObject.Find("Hunger Meter").GetComponent<Image>();
 		healthDisplay = GameObject.Find("Health Meter").GetComponent<Image>();
 		destructionDisplay = GameObject.Find("Destruction Meter").GetComponent<Image>();
@@ -162,5 +169,23 @@ public class KaijuStats : MonoBehaviour
 		{
 			destructionNeed = kaiju.maxDestructionNeed;
 		}
+	}
+
+	public void StartFruitGame()
+	{
+		hungerDisplay.transform.parent.GetComponent<Canvas>().enabled = false;
+		gameObject.GetComponent<SpriteRenderer>().enabled = false;
+		appleMiniGame.gameObject.SetActive(true);
+		FindObjectOfType<AppleMinigameControls>().GetComponent<SpriteRenderer>().sprite = kaiju.sprite;
+		FindObjectOfType<AppleMinigameControls>().speed = kaiju.speed;
+		appleMiniGame.StartMinigame();
+
+	}
+
+	public void EndFruitGame()
+	{
+		hungerDisplay.transform.parent.GetComponent<Canvas>().enabled = true;
+		gameObject.GetComponent<SpriteRenderer>().enabled = true;
+		appleMiniGame.gameObject.SetActive(false);
 	}
 }

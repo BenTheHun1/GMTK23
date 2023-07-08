@@ -46,5 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeRemaining: 0
   isTimerRunning: 0
-  displayTimer: 0
+  displayTimer: 1
   timerText: {fileID: 0}

@@ -36,7 +36,7 @@ public class UseItemVolume : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        //Debug.Log("Cursor Is Entering Entity.");
+        Debug.Log("Cursor Is Entering Entity.");
         if (InventoryController.main.IsInventoryActive())
         {
             isSelected = true;
