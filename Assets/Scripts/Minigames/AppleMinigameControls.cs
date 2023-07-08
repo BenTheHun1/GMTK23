@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class MinigameControls : MonoBehaviour
+public class AppleMinigameControls : MonoBehaviour
 {
 
     [SerializeField]
@@ -15,11 +15,11 @@ public class MinigameControls : MonoBehaviour
     private Vector2 moveInput;
     private Rigidbody2D rbKaiju;
     private bool playing;
-    private Minigame mgCode;
+    private AppleMinigame mgCode;
 
     private void Awake()
     {
-        mgCode = GetComponentInParent<Minigame>();
+        mgCode = GetComponentInParent<AppleMinigame>();
         speed = 5.0f;
         playerCons = new PlayerControlSystem();
         rbKaiju = GetComponent<Rigidbody2D>();

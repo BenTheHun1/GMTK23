@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 
 
-public class Minigame : MonoBehaviour
+public class AppleMinigame : MonoBehaviour
 {
 
     [SerializeField] private float timeRemaining;

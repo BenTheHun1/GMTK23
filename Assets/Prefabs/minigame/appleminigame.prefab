@@ -662,12 +662,12 @@ GameObject:
   - component: {fileID: 863172904381925724}
   - component: {fileID: 863172904381925725}
   m_Layer: 0
-  m_Name: minigame
+  m_Name: appleminigame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &863172904381925724
 Transform:
   m_ObjectHideFlags: 0
@@ -700,6 +700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeRemaining: 0
+  spawn: 0
   applePrefab: {fileID: 2554560994637838446, guid: ab10d645008d60447913a0763a99a523, type: 3}
   appleHolder: {fileID: 863172903881760025}
   score: 0
