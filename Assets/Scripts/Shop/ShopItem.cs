@@ -47,4 +47,27 @@ public class ShopItem : MonoBehaviour
         if(newLabel.activeInHierarchy)
             newLabel.SetActive(false);
     }
+
+    /// <summary>
+    /// Purchases the item that the player selects.
+    /// </summary>
+    public void PurchaseItem()
+    {
+        //If the player can afford to purchase the item, update the currency and add the item to their inventory
+        if(itemInfo.price <= GameData.currency)
+        {
+            ShopController.main.UpdateCurrency(-itemInfo.price);
+            GameData.AddToInventory(itemInfo);
+
+            //Display that the item was purchased
+            foreach (var infoDisplay in FindObjectsOfType<ItemInfoDisplay>())
+                infoDisplay.UpdateItemInformation(itemInfo.name + " successfully purchased.");
+        }
+        else
+        {
+            //Display that the item could not be purchased
+            foreach (var infoDisplay in FindObjectsOfType<ItemInfoDisplay>())
+                infoDisplay.UpdateItemInformation("Not enough currency to buy this product.");
+        }
+    }
 }
