@@ -1,27 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-[System.Serializable]
-public class Item
+[CreateAssetMenu(fileName = "New Item", menuName = "Item")]
+public class Item: ScriptableObject
 {
     public int ID;
-    public string name;
+    public new string name;
     public string description;
-    public int quantity;
-    public Sprite itemImage;
-    public Color imageColor;
+    public int price;
 
-    //This is a custom Item class created to store groups of data for one Item object
-    public Item(int itemID, string itemName, string itemDescription, int itemQuantity, SpriteRenderer itemImg)
+    public Sprite itemImage;
+    public Color imageColor = Color.white;
+    public bool available = false;
+
+    internal bool displayed = false;
+
+    public void DisplayItem()
     {
-        ID = itemID;
-        name = itemName;
-        description = itemDescription;
-        quantity = itemQuantity;
-        itemImage = itemImg.sprite;
-        imageColor = itemImg.color;
+        displayed = true;
     }
 }
-
