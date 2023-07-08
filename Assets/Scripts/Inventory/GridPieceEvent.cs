@@ -15,7 +15,6 @@ public class GridPieceEvent : MonoBehaviour,
     private Vector3 originalPosition;
     private bool isSelected;
     private GameObject parentUI;
-    private int siblingIndex;
 
     private RectTransform itemImageTransform;
 
@@ -31,7 +30,6 @@ public class GridPieceEvent : MonoBehaviour,
         gridColor = gridImage.color;
         itemImageTransform = gridItemImage.GetComponent<RectTransform>();
         originalPosition = itemImageTransform.anchoredPosition;
-        siblingIndex = gridImage.transform.GetSiblingIndex();
     }
 
     private void Update()
@@ -81,10 +79,8 @@ public class GridPieceEvent : MonoBehaviour,
         {
             isSelected = true;
             InventoryController.main.isDragging = isSelected;
-            gridImage.transform.SetSiblingIndex(1);
             gridImage.GetComponentInChildren<CanvasGroup>().alpha = 0;
             InventoryController.main.activeInventoryID = inventoryImageID;
-            InventoryController.main.activeSiblingIndex = 1;
         }
     }
 
@@ -101,9 +97,9 @@ public class GridPieceEvent : MonoBehaviour,
         InventoryController.main.isDragging = isSelected;
         gridImage.transform.SetParent(parentUI.transform);
         gridImage.color = gridColor;
-        gridImage.transform.SetSiblingIndex(siblingIndex);
+        //gridImage.transform.SetSiblingIndex(siblingIndex);
         gridImage.GetComponentInChildren<CanvasGroup>().alpha = 1;
-        InventoryController.main.activeSiblingIndex = -1;
+        //InventoryController.main.activeSiblingIndex = -1;
         itemImageTransform.anchoredPosition = originalPosition;
     }
 
