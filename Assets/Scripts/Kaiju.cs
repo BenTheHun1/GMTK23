@@ -15,6 +15,10 @@ public class Kaiju : ScriptableObject
 	public float maxDestructionNeed = 100f;
 	public float destructionDecay = 20f;
 
+	public float sexiness = 0f;
+
 	public Sprite sprite;
+	public Vector3 hatPoint;
 	public string typeName;
+	
 }

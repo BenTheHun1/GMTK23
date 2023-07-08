@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2fc3976fc16708439a788293ab4b3db, type: 3}
-  m_Name: -1 Herbivore
+  m_Name: 3 Carnivore
   m_EditorClassIdentifier: 
-  id: -1
-  maxHunger: 70
-  hungerDecay: 5
-  maxHealth: 100
+  id: 3
+  maxHunger: 150
+  hungerDecay: 20
+  maxHealth: 200
   healthDecayFromHunger: 50
-  maxDestructionNeed: 40
-  destructionDecay: 10
-  sprite: {fileID: -760529687, guid: ee19be9f5143aef4aad7d114a0603f60, type: 3}
+  maxDestructionNeed: 200
+  destructionDecay: 40
+  sprite: {fileID: 1598315578, guid: ee19be9f5143aef4aad7d114a0603f60, type: 3}
   hatPoint: {x: 0, y: 0.17, z: 0}
-  typeName: Herbivore 1
+  typeName: Carnivore 3
