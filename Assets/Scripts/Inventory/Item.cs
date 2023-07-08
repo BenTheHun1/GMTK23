@@ -9,6 +9,7 @@ public class Item: ScriptableObject
     public new string name;
     public string description;
     public int price;
+    public int quality;
 
     public Sprite itemImage;
     public Color imageColor = Color.white;

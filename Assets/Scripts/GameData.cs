@@ -18,6 +18,8 @@ public static class GameData
 {
     internal static int currency = 1000;
     internal static List<ItemData> inventory = new List<ItemData>();
+    internal static List<Hat> equipment = new List<Hat>();
+    internal static Hat currentEquipment = null;
 
     public static void AddToInventory(Item itemData)
     {
@@ -66,6 +68,11 @@ public static class GameData
         {
             inventory.RemoveAt(counter);
         }
+    }
+
+    public static void AddToEquipment(Hat equipmentData)
+    {
+        equipment.Add(equipmentData);
     }
 
     public static float GetBGMVolume() => PlayerPrefs.GetFloat("BGMVolume", 0.5f);

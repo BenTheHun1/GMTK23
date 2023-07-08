@@ -38,6 +38,7 @@ public class KaijuStats : MonoBehaviour
 		destructionDisplay = GameObject.Find("Destruction Meter").GetComponent<Image>();
 		
 		hatObject = transform.GetChild(0).GetComponent<SpriteRenderer>();
+		hatObject.color = new Color(0, 0, 0, 0);
 
 		hunger = startingKaiju.maxHunger; //Otherwise starts at 0
 		health = startingKaiju.maxHealth;
@@ -47,11 +48,13 @@ public class KaijuStats : MonoBehaviour
 		LoadKaiju(startingKaiju);
 	}
 
-	void LoadHat(Hat newHat)
+	public void LoadHat(Hat newHat)
 	{
 		curHat = newHat;
+		GameData.currentEquipment = curHat;
 
 		hatObject.sprite = curHat.sprite;
+		hatObject.color = Color.white;
 
 		hatObject.transform.localPosition = kaiju.hatPoint;
 
@@ -159,7 +162,7 @@ public class KaijuStats : MonoBehaviour
 
 	public void GiveHimDaHat() // Temp
 	{
-		LoadHat(allHats[0]);
+		//LoadHat(allHats[0]);
 	}
 
 	public void Destruction()

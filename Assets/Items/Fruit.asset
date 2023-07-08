@@ -16,6 +16,7 @@ MonoBehaviour:
   name: Apple
   description: Some kind of basic fruit.
   price: 50
+  quality: 1
   itemImage: {fileID: 21300000, guid: 4beed3d8855bcb545b548bb4d0c747e5, type: 3}
   imageColor: {r: 1, g: 1, b: 1, a: 1}
   available: 1
