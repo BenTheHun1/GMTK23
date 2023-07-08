@@ -12,7 +12,6 @@ public class FashionShow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-		StartFashionShow.interactable = false;
 		kaiju = FindObjectOfType<KaijuStats>();
 		curThreshold = 5;
 	}
@@ -25,7 +24,8 @@ public class FashionShow : MonoBehaviour
 
 	public void MakeFashionShowAvailable()
 	{
-		StartFashionShow.interactable = true;
+		FindObjectOfType<FashionShowController>().ActivatePopup();
+		//StartFashionShow.interactable = true;
 	}
 
 	public void StartShow()

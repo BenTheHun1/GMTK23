@@ -72,5 +72,7 @@ public class FashionShowController : MonoBehaviour
         LeanTween.moveX(fashionShowTransform, fashionShowEndPos.x, fashionShowEnterDuration).setEase(fashionShowEnterEaseType).setOnComplete(() => fashionShowActive = true);
         LeanTween.moveY(fashionShowTransform, fashionShowEndPos.y, fashionShowEnterDuration).setEase(fashionShowEnterEaseType);
         LeanTween.scale(fashionShowTransform, Vector3.one, fashionShowEnterDuration).setEase(fashionShowEnterEaseType);
+
+		FindObjectOfType<FashionShow>().StartShow();
     }
 }
