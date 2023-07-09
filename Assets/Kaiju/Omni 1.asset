@@ -22,5 +22,5 @@ MonoBehaviour:
   sexiness: 0
   speed: 1
   sprite: {fileID: 1041052388, guid: ff0e4e8dc6fbf8541a97c09409c5f5ee, type: 3}
-  hatPoint: {x: 0, y: 0.17, z: 0}
+  hatPoint: {x: 1.51, y: 0.33, z: 0}
   kaijuType: 1

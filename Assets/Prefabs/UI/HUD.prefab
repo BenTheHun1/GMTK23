@@ -1116,7 +1116,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500, y: 50}
+  m_SizeDelta: {x: 500, y: 90}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &5841091519545934489
 CanvasRenderer:
@@ -1148,8 +1148,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Timer
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 793fc5a99e89b9a4e8030efde4b12ba2, type: 2}
-  m_sharedMaterial: {fileID: -4383153248657635655, guid: 793fc5a99e89b9a4e8030efde4b12ba2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: aba2507067c037448b048751ecc14491, type: 2}
+  m_sharedMaterial: {fileID: -2294158154409659032, guid: aba2507067c037448b048751ecc14491, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1173,7 +1173,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 53.3
+  m_fontSize: 70.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

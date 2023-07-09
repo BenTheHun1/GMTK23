@@ -16,6 +16,10 @@ public class TriggeredTimer : MonoBehaviour
     public bool displayTimer;
     public TMP_Text timerText;
 
+	public List<float> evolveTimes;
+	public int curEvolve;
+	public List<float> fashionTimes;
+	public int curFashion;
 
     void Update()
     {
@@ -28,13 +32,15 @@ public class TriggeredTimer : MonoBehaviour
                 {
                     timerText.SetText(TimeToString());
                 }
-				if ((int)timeRemaining % fashionShowFrequency == 0)
+				if ((int)timeRemaining == evolveTimes[curEvolve])
 				{
-					FindObjectOfType<FashionShow>().MakeFashionShowAvailable();
-				}
-				if ((int)timeRemaining % evolutionFrequency == 0)
-				{
+					curEvolve++;
 					FindObjectOfType<KaijuStats>().TriggerEvolution();
+				}
+				if ((int)timeRemaining == fashionTimes[curFashion])
+				{
+					curFashion++;
+					FindObjectOfType<FashionShow>().MakeFashionShowAvailable();
 				}
 			}
             else
@@ -59,7 +65,27 @@ public class TriggeredTimer : MonoBehaviour
     {
         timeRemaining = totalTime;
         timerText.SetText(TimeToString());
-    }
+		float totalTime2 = totalTime;
+		while (true)
+		{
+			evolveTimes.Add(totalTime2 - evolutionFrequency);
+			totalTime2 -= evolutionFrequency;
+			if (totalTime2 - evolutionFrequency < 0)
+			{
+				break;
+			}
+		}
+		totalTime2 = totalTime;
+		while (true)
+		{
+			fashionTimes.Add(totalTime2 - fashionShowFrequency);
+			totalTime2 -= fashionShowFrequency;
+			if (totalTime2 - fashionShowFrequency < 0)
+			{
+				break;
+			}
+		}
+	}
 
     public void StartTimer()
     {

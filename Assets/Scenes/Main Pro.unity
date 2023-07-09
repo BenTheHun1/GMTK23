@@ -1496,30 +1496,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1850013597, guid: c82e4b3ad666b6543b61620abab6b655, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1850013597, guid: c82e4b3ad666b6543b61620abab6b655, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1850013597, guid: c82e4b3ad666b6543b61620abab6b655, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1850013597, guid: c82e4b3ad666b6543b61620abab6b655, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1850013598, guid: c82e4b3ad666b6543b61620abab6b655, type: 3}
-      propertyPath: m_Radius
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1850013598, guid: c82e4b3ad666b6543b61620abab6b655, type: 3}
-      propertyPath: m_Offset.y
-      value: -1
-      objectReference: {fileID: 0}
     - target: {fileID: 863172904381925714, guid: c82e4b3ad666b6543b61620abab6b655, type: 3}
       propertyPath: m_Name
       value: appleminigame
@@ -1781,6 +1757,10 @@ PrefabInstance:
       propertyPath: timerText
       value: 
       objectReference: {fileID: 1345785617}
+    - target: {fileID: 5110199295745539401, guid: 6b93b5859302ff645b1c1c84cae2c837, type: 3}
+      propertyPath: totalTime
+      value: 2100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b93b5859302ff645b1c1c84cae2c837, type: 3}
 --- !u!1001 &3816431680943370919

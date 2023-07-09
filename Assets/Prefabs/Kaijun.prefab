@@ -4884,13 +4884,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.475, y: 0.84}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -4997,7 +4997,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0011ab32636cde4d9d7655560896ff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingKaiju: {fileID: 11400000, guid: 13e4b87173ea06c4a9e1e4c2d53dbfdb, type: 2}
+  startingKaiju: {fileID: 11400000, guid: 2a72117e1f00f2c4cae778134461bb1a, type: 2}
   kaiju: {fileID: 0}
   herbKaiju:
   - {fileID: 11400000, guid: 2a72117e1f00f2c4cae778134461bb1a, type: 2}
