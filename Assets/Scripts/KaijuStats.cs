@@ -124,13 +124,17 @@ public class KaijuStats : MonoBehaviour
         {
 			//Apple
 			case 0:
-				Feed(-1);
+				Feed(-4);
 				break;
 			//Human
 			case 1:
-				Feed(1);
+				Feed(10);
 				break;
-        }
+			//Rat
+			case 2:
+				Feed(4);
+				break;
+		}
     }
 
 	public void Feed(int amount)
@@ -177,6 +181,7 @@ public class KaijuStats : MonoBehaviour
 	{
 		hungerDisplay.transform.parent.GetComponent<Canvas>().enabled = !startIfTrue;
 		gameObject.GetComponent<SpriteRenderer>().enabled = !startIfTrue;
+		hatObject.enabled = !startIfTrue;
 		FindObjectOfType<ShopController>().GetComponent<Canvas>().enabled = !startIfTrue;
 		FindObjectOfType<InventoryController>().GetComponent<Canvas>().enabled = !startIfTrue;
 
@@ -194,6 +199,7 @@ public class KaijuStats : MonoBehaviour
 	{
 		hungerDisplay.transform.parent.GetComponent<Canvas>().enabled = !startIfTrue;
 		gameObject.GetComponent<SpriteRenderer>().enabled = !startIfTrue;
+		hatObject.enabled = !startIfTrue;
 		FindObjectOfType<ShopController>().GetComponent<Canvas>().enabled = !startIfTrue;
 		FindObjectOfType<InventoryController>().GetComponent<Canvas>().enabled = !startIfTrue;
 
