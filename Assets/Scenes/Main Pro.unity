@@ -323,7 +323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1372698443574896416, guid: daf7ae01388c4a84dab4c4def3bda732, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1372698443574896420, guid: daf7ae01388c4a84dab4c4def3bda732, type: 3}
       propertyPath: m_Pivot.x
@@ -569,7 +569,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1553480386762779184, guid: b4dcb6acd940c18458cf6321273412ba, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4dcb6acd940c18458cf6321273412ba, type: 3}
@@ -1878,6 +1878,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShopUI
       objectReference: {fileID: 0}
+    - target: {fileID: 3816431681674819559, guid: 216ffaab6f901e347a8d029a3d4aa919, type: 3}
+      propertyPath: equipmentItems.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3816431681674819559, guid: 216ffaab6f901e347a8d029a3d4aa919, type: 3}
+      propertyPath: equipmentItems.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8b8710ac2ecbfb44b83aaf529d5d631e, type: 2}
+    - target: {fileID: 3816431681674819559, guid: 216ffaab6f901e347a8d029a3d4aa919, type: 3}
+      propertyPath: equipmentItems.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: a3963329d4c0c5047911b73c43fd1303, type: 2}
+    - target: {fileID: 3816431681674819559, guid: 216ffaab6f901e347a8d029a3d4aa919, type: 3}
+      propertyPath: equipmentItems.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 37f15563bf465b54a9e44cfd01b12eab, type: 2}
     - target: {fileID: 8337427134537273551, guid: 216ffaab6f901e347a8d029a3d4aa919, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
