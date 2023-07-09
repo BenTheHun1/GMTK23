@@ -999,6 +999,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 5841091520686765910, guid: 1de858ac34785ac4dac91b9597041afd, type: 3}
+      propertyPath: m_fontSize
+      value: 38.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841091520686765910, guid: 1de858ac34785ac4dac91b9597041afd, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 53.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1de858ac34785ac4dac91b9597041afd, type: 3}
 --- !u!114 &1345785617 stripped
