@@ -20,6 +20,7 @@ MonoBehaviour:
   maxDestructionNeed: 40
   destructionDecay: 10
   sexiness: 5
-  sprite: {fileID: -760529687, guid: ee19be9f5143aef4aad7d114a0603f60, type: 3}
+  speed: 1
+  sprite: {fileID: 1414851739, guid: ff0e4e8dc6fbf8541a97c09409c5f5ee, type: 3}
   hatPoint: {x: 0, y: 0.17, z: 0}
-  typeName: Herbivore 1
+  kaijuType: 0

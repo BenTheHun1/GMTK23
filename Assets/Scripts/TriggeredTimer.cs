@@ -7,6 +7,7 @@ public class TriggeredTimer : MonoBehaviour
 {
     [SerializeField] private float fashionShowFrequency = 300f;
     [SerializeField] private float evolutionFrequency = 900f;
+	[SerializeField] private float totalTime;
     [SerializeField] private float timeRemaining;
 
     [SerializeField] private bool debugEndTimer;
@@ -54,9 +55,9 @@ public class TriggeredTimer : MonoBehaviour
 
     private string TimeToString() => (Mathf.FloorToInt(timeRemaining / 60)).ToString() + ":" + (Mathf.FloorToInt(timeRemaining % 60)).ToString("00");
 
-    public void InitializeTimer(float time)
+    public void InitializeTimer()
     {
-        timeRemaining = time;
+        timeRemaining = totalTime;
         timerText.SetText(TimeToString());
     }
 

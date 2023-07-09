@@ -21,6 +21,6 @@ MonoBehaviour:
   destructionDecay: 40
   sexiness: 15
   speed: 1
-  sprite: {fileID: -856303100, guid: ee19be9f5143aef4aad7d114a0603f60, type: 3}
+  sprite: {fileID: -1766017874, guid: ff0e4e8dc6fbf8541a97c09409c5f5ee, type: 3}
   hatPoint: {x: 0, y: 0.17, z: 0}
   kaijuType: 2

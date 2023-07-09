@@ -616,6 +616,18 @@ PrefabInstance:
       propertyPath: appleMiniGame
       value: 
       objectReference: {fileID: 1856281706}
+    - target: {fileID: 5489185712194804734, guid: ecae37449cf020c4bb71f73566d58d6b, type: 3}
+      propertyPath: carnKaiju.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5489185712194804734, guid: ecae37449cf020c4bb71f73566d58d6b, type: 3}
+      propertyPath: herbKaiju.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5489185712194804734, guid: ecae37449cf020c4bb71f73566d58d6b, type: 3}
+      propertyPath: omniKaiju.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5489185712194804735, guid: ecae37449cf020c4bb71f73566d58d6b, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1649,6 +1661,10 @@ PrefabInstance:
       propertyPath: timerText
       value: 
       objectReference: {fileID: 1345785617}
+    - target: {fileID: 5110199295745539401, guid: 6b93b5859302ff645b1c1c84cae2c837, type: 3}
+      propertyPath: totalTime
+      value: 1800
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b93b5859302ff645b1c1c84cae2c837, type: 3}
 --- !u!1001 &3816431680943370919

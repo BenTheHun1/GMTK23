@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         FindObjectOfType<AudioManager>().Play("GameMusic", GameData.GetBGMVolume());
-        FindObjectOfType<TriggeredTimer>().InitializeTimer(3600f);
+        FindObjectOfType<TriggeredTimer>().InitializeTimer();
     }
 
     public void Init()
