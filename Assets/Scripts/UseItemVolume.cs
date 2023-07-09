@@ -8,9 +8,11 @@ public class UseItemVolume : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField] private Color hoverColor;
 
     private PlayerControlSystem playerControls;
-    private bool isSelected = false;
+	[SerializeField] private bool isSelected = false;
     private SpriteRenderer spriteRenderer;
     private Color normalColor;
+
+	public ParticleSystem love;
 
     private void Awake()
     {
@@ -36,10 +38,10 @@ public class UseItemVolume : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        //Debug.Log("Cursor Is Entering Entity.");
-        if (InventoryController.main.IsInventoryActive())
+		isSelected = true;
+		//Debug.Log("Cursor Is Entering Entity.");
+		if (InventoryController.main.IsInventoryActive())
         {
-            isSelected = true;
             spriteRenderer.color = hoverColor;
         }
     }
@@ -71,5 +73,9 @@ public class UseItemVolume : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             Debug.Log("Item Successfully Used!");
             InventoryController.main.hasSuccessfulInteraction = true;
         }
+		else if (isSelected && !InventoryController.main.IsInventoryActive())
+		{
+			love.Play();
+		}
     }
 }
