@@ -19,6 +19,7 @@ public static class GameData
     internal static string currentMusicPlaying = "";
 
     internal static bool inGame = false;
+    internal static bool miniGameActive = false;
     internal static bool transitionActive = false;
 
     internal static string kaijuName = "Kaiju";

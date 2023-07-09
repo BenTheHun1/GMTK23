@@ -53,7 +53,7 @@ public class InventoryController : MonoBehaviour
     /// </summary>
     public void ToggleInventory()
     {
-        if (!GameData.transitionActive && GameData.inGame)
+        if (!GameData.transitionActive && GameData.inGame && !GameData.miniGameActive)
         {
             isInventoryActive = !isInventoryActive;
 
