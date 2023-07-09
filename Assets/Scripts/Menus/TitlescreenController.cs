@@ -26,8 +26,6 @@ public class TitlescreenController : MonoBehaviour
     private MenuState currentMenuState;
     private MenuState exitMenuState;
 
-    private bool transitionActive = false;
-
     private PlayerControlSystem playerControlSystem;
 
     private void Awake()
@@ -56,12 +54,15 @@ public class TitlescreenController : MonoBehaviour
     private void StartMenu()
     {
         if(currentMenuState == MenuState.START)
+        {
             SwitchMenu((int)MenuState.MAIN);
+            FindObjectOfType<AudioManager>().PlayOneShot("StartScreen", GameData.GetSFXVolume());
+        }
     }
 
     public void SwitchMenu(int newMenuState)
     {
-        if (!transitionActive && !GameData.inGame)
+        if (!GameData.transitionActive && !GameData.inGame)
         {
             exitMenuState = currentMenuState;
             currentMenuState = (MenuState)newMenuState;
@@ -72,19 +73,19 @@ public class TitlescreenController : MonoBehaviour
 
     private void AnimateMenuState(MenuState menuState, bool isEntering)
     {
-        transitionActive = true;
+        GameData.transitionActive = true;
         switch (menuState)
         {
             case MenuState.START:
                 if (!isEntering)
                 {
-                    LeanTween.moveY(menuStates[(int)MenuState.START], startScreenEndPos, menuAnimationDuration).setEase(slideMenuEaseType).setOnComplete(() => transitionActive = false);
+                    LeanTween.moveY(menuStates[(int)MenuState.START], startScreenEndPos, menuAnimationDuration).setEase(slideMenuEaseType).setOnComplete(() => GameData.transitionActive = false);
                 }
                 break;
             case MenuState.MAIN:
                 if (isEntering)
                 {
-                    LeanTween.moveY(menuStates[(int)MenuState.MAIN], mainMenuEndPos, menuAnimationDuration).setEase(slideMenuEaseType).setOnComplete(() => transitionActive = false);
+                    LeanTween.moveY(menuStates[(int)MenuState.MAIN], mainMenuEndPos, menuAnimationDuration).setEase(slideMenuEaseType).setOnComplete(() => GameData.transitionActive = false);
                 }
                 break;
         }
@@ -92,7 +93,7 @@ public class TitlescreenController : MonoBehaviour
 
     public void PlayGame()
     {
-        if (!transitionActive && !GameData.inGame)
+        if (!GameData.transitionActive && !GameData.inGame)
         {
             IntroAnimation();
         }
@@ -100,20 +101,23 @@ public class TitlescreenController : MonoBehaviour
 
     private void IntroAnimation()
     {
-        transitionActive = true;
+        GameData.transitionActive = true;
+        GameManager.instance.StopMusic();
+        FindObjectOfType<AudioManager>().PlayOneShot("StartGameTone", GameData.GetSFXVolume());
         LeanTween.alphaCanvas(whiteScreen, 1f, fadeInDuration).setEase(fadeInEaseType).setOnComplete(InitializeGameSequence);
     }
 
     private void InitializeGameSequence()
     {
+        GameManager.instance.ChangeMusic("GameMusic");
         GetComponent<CanvasGroup>().alpha = 0;
         GetComponent<CanvasGroup>().blocksRaycasts = false;
-        LeanTween.alphaCanvas(whiteScreen, 0f, fadeOutDuration).setEase(fadeOutEaseType).setOnComplete(() => transitionActive = false);
+        LeanTween.alphaCanvas(whiteScreen, 0f, fadeOutDuration).setEase(fadeOutEaseType).setOnComplete(() => GameData.transitionActive = false);
     }
 
     public void QuitGame()
     {
-        if (!transitionActive && !GameData.inGame)
+        if (!GameData.transitionActive && !GameData.inGame)
             GameManager.instance.QuitApplication();
     }
 }

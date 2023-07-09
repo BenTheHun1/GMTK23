@@ -16,7 +16,10 @@ public class ItemData
 
 public static class GameData
 {
+    internal static string currentMusicPlaying = "";
+
     internal static bool inGame = false;
+    internal static bool transitionActive = false;
 
     internal static string kaijuName = "Kaiju";
     internal static int currency = 1000;
@@ -79,4 +82,5 @@ public static class GameData
     }
 
     public static float GetBGMVolume() => PlayerPrefs.GetFloat("BGMVolume", 0.5f);
+    public static float GetSFXVolume() => PlayerPrefs.GetFloat("SFXVolume", 0.5f);
 }

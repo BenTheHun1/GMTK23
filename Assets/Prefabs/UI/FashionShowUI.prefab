@@ -1707,6 +1707,10 @@ PrefabInstance:
       propertyPath: m_HorizontalAlignment
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4495087749009055755, guid: 312accfaa8d784a458e362cd5f08b63f, type: 3}
+      propertyPath: buttonClick
+      value: ButtonClick02
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 312accfaa8d784a458e362cd5f08b63f, type: 3}
 --- !u!224 &7394283391238653064 stripped

@@ -28,8 +28,27 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        FindObjectOfType<AudioManager>().Play("GameMusic", GameData.GetBGMVolume());
+
+        ChangeMusic("TitlescreenMusic");
         FindObjectOfType<TriggeredTimer>().InitializeTimer();
+    }
+
+    public void ChangeMusic(string newMusicPlaying)
+    {
+        if (GameData.currentMusicPlaying != "" && FindObjectOfType<AudioManager>().IsPlaying(GameData.currentMusicPlaying))
+            StopMusic();
+
+        GameData.currentMusicPlaying = newMusicPlaying;
+        FindObjectOfType<AudioManager>().Play(GameData.currentMusicPlaying, GameData.GetBGMVolume());
+    }
+
+    public void StopMusic()
+    {
+        if(GameData.currentMusicPlaying != "")
+        {
+            FindObjectOfType<AudioManager>().Stop(GameData.currentMusicPlaying);
+            GameData.currentMusicPlaying = "";
+        }
     }
 
     public void Init()
@@ -41,6 +60,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         GameData.inGame = false;
+        FindObjectOfType<AudioManager>().PlayOneShot("GameOver", GameData.GetSFXVolume());
         FindObjectOfType<GameOverController>().ShowGameOverScreen();
     }
 
