@@ -630,7 +630,7 @@ RectTransform:
   m_Children:
   - {fileID: 1553480386361732292}
   m_Father: {fileID: 1553480386762779084}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1427,8 +1427,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1553480386109223955}
   - {fileID: 1351649941914572748}
+  - {fileID: 1553480386109223955}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1510,6 +1510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 175a508f69863b249921dba67a868505, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kaijuName: {fileID: 0}
   howToPlayPanel: {fileID: 1553480386109223955}
   namePanel: {fileID: 1351649941914572748}
   howToPlayText: {fileID: 1553480386271361476}
@@ -2462,7 +2463,7 @@ RectTransform:
   m_Children:
   - {fileID: 6779797369873552987}
   m_Father: {fileID: 1553480386762779084}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: -2
   maxHunger: 70
-  hungerDecay: 1
+  hungerDecay: 5
   maxHealth: 100
   healthDecayFromHunger: 50
   maxDestructionNeed: 40

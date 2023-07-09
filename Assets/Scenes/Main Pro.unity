@@ -313,6 +313,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TitlescreenUI
       objectReference: {fileID: 0}
+    - target: {fileID: 1372698443574896416, guid: daf7ae01388c4a84dab4c4def3bda732, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1372698443574896420, guid: daf7ae01388c4a84dab4c4def3bda732, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -410,6 +414,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1553480386109223952, guid: b4dcb6acd940c18458cf6321273412ba, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1553480386109223955, guid: b4dcb6acd940c18458cf6321273412ba, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 1553480386762779084, guid: b4dcb6acd940c18458cf6321273412ba, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -494,9 +506,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1553480386762779087, guid: b4dcb6acd940c18458cf6321273412ba, type: 3}
+      propertyPath: howToPlayPassages.Array.data[0]
+      value: You have a little Kaiju to raise! Humanity will attack in 30 minutes.
+        Until then, keep them fed, and their destructive impulses satiated.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1553480386762779087, guid: b4dcb6acd940c18458cf6321273412ba, type: 3}
+      propertyPath: howToPlayPassages.Array.data[1]
+      value: You can buy food in the Shop, or you can play two different mini games.
+        Be conscious of what you are feeding your Kaiju, as it may influence how
+        it develops.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1553480386762779087, guid: b4dcb6acd940c18458cf6321273412ba, type: 3}
+      propertyPath: howToPlayPassages.Array.data[2]
+      value: To get money, your Kaiju can participate in fashion shows! A new fashion
+        show starts every 5 minutes, and your performance is based on the fanciness
+        of your hat and your Kaiju both.
+      objectReference: {fileID: 0}
     - target: {fileID: 1553480386762779184, guid: b4dcb6acd940c18458cf6321273412ba, type: 3}
       propertyPath: m_Name
       value: HowToPlayCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1553480386762779184, guid: b4dcb6acd940c18458cf6321273412ba, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4dcb6acd940c18458cf6321273412ba, type: 3}
@@ -515,6 +548,10 @@ PrefabInstance:
       propertyPath: ratMiniGame
       value: 
       objectReference: {fileID: 1704816877}
+    - target: {fileID: 5489185712194804734, guid: ecae37449cf020c4bb71f73566d58d6b, type: 3}
+      propertyPath: evolveNotice
+      value: 
+      objectReference: {fileID: 1587695818}
     - target: {fileID: 5489185712194804734, guid: ecae37449cf020c4bb71f73566d58d6b, type: 3}
       propertyPath: appleMiniGame
       value: 
@@ -1056,6 +1093,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1587695818 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1587695818, guid: 1de858ac34785ac4dac91b9597041afd, type: 3}
+  m_PrefabInstance: {fileID: 1345785616}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1626400914
 GameObject:
   m_ObjectHideFlags: 0
