@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class FashionShow : MonoBehaviour
 {
-	public Button StartFashionShow;
 	public float curThreshold;
 	private KaijuStats kaiju;
 
@@ -25,7 +24,6 @@ public class FashionShow : MonoBehaviour
 	public void MakeFashionShowAvailable()
 	{
 		FindObjectOfType<FashionShowController>().ActivatePopup();
-		//StartFashionShow.interactable = true;
 	}
 
 	public void StartShow()
