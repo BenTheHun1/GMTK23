@@ -8,8 +8,9 @@ public class GameOverController : MonoBehaviour
 {
     [SerializeField] private RectTransform gameOverTransform;
     [SerializeField] private RectTransform gameEndTransform;
+	[SerializeField] private RectTransform BG;
 
-    [SerializeField] private TextMeshProUGUI deathMessageText;
+	[SerializeField] private TextMeshProUGUI deathMessageText;
     [SerializeField] private TextMeshProUGUI gameEndMessageText;
 
     [SerializeField] private float gameOverAlphaDuration;
@@ -28,8 +29,9 @@ public class GameOverController : MonoBehaviour
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
         gameOverTransform.gameObject.SetActive(true);
+		BG.gameObject.SetActive(true);
 
-        deathMessageText.text = GameData.kaijuName + " Has Passed Away.";
+		deathMessageText.text = GameData.kaijuName + " Has Passed Away.";
 
         LeanTween.alphaCanvas(canvasGroup, 1f, gameOverAlphaDuration).setEase(gameOverAlphaEaseType);
     }
@@ -39,8 +41,9 @@ public class GameOverController : MonoBehaviour
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
         gameEndTransform.gameObject.SetActive(true);
+		BG.gameObject.SetActive(true);
 
-        gameEndMessageText.text = "The time has passed.";
+		gameEndMessageText.text = "The time has passed.";
 
         LeanTween.alphaCanvas(canvasGroup, 1f, gameOverAlphaDuration).setEase(gameOverAlphaEaseType);
     }

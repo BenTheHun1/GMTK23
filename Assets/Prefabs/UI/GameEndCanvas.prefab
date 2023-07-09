@@ -628,7 +628,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4472787527884605220
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1433,6 +1433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverTransform: {fileID: 4472787527789092917}
   gameEndTransform: {fileID: 1247936178210033589}
+  BG: {fileID: 4472787527884605220}
   deathMessageText: {fileID: 4472787528357229259}
   gameEndMessageText: {fileID: 1059321982180288300}
   gameOverAlphaDuration: 0.5
