@@ -16,4 +16,8 @@ public class PolygonalButton : MonoBehaviour
     {
         
     }
+	public void PlaySound() 
+	{
+		GetComponent<AudioSource>().PlayOneShot(GetComponent<AudioSource>().clip);
+	}
 }
