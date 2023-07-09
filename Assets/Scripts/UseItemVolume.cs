@@ -47,11 +47,12 @@ public class UseItemVolume : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
 
     public void OnPointerExit(PointerEventData eventData)
-    {
-        //Debug.Log("Cursor Is Exiting Entity.");
-        if (InventoryController.main.IsInventoryActive())
+	{
+		ResetVolume();
+		//Debug.Log("Cursor Is Exiting Entity.");
+		if (InventoryController.main.IsInventoryActive())
         {
-            ResetVolume();
+            //ResetVolume();
         }
     }
 
