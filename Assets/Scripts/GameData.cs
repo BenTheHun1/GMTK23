@@ -18,6 +18,7 @@ public static class GameData
 {
     internal static bool inGame = false;
 
+    internal static string kaijuName = "Kaiju";
     internal static int currency = 1000;
     internal static List<ItemData> inventory = new List<ItemData>();
     internal static List<Hat> equipment = new List<Hat>();

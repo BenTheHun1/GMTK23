@@ -341,7 +341,7 @@ MonoBehaviour:
   fadeInDuration: 2
   delayDuration: 1
   fadeOutDuration: 3
-  fadeInEaseType: 37
+  fadeInEaseType: 6
   fadeOutEaseType: 2
 --- !u!225 &1372698443574896474
 CanvasGroup:
