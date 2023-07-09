@@ -22,6 +22,7 @@ public class KaijuStats : MonoBehaviour
 	[Tooltip("Current equipped Hat.")] public Hat curHat;
 
 	public AppleMinigame appleMiniGame;
+	public RatMinigame ratMiniGame;
 
 
 	// Start is called before the first frame update
@@ -30,6 +31,10 @@ public class KaijuStats : MonoBehaviour
 		if (appleMiniGame)
 		{
 			appleMiniGame.gameObject.SetActive(false);
+		}
+		if (ratMiniGame)
+		{
+			ratMiniGame.gameObject.SetActive(false);
 		}
 
 		hungerDisplay = GameObject.Find("Hunger Meter").GetComponent<Image>();
@@ -172,9 +177,10 @@ public class KaijuStats : MonoBehaviour
 	{
 		hungerDisplay.transform.parent.GetComponent<Canvas>().enabled = !startIfTrue;
 		gameObject.GetComponent<SpriteRenderer>().enabled = !startIfTrue;
-		appleMiniGame.gameObject.SetActive(startIfTrue);
 		FindObjectOfType<ShopController>().GetComponent<Canvas>().enabled = !startIfTrue;
 		FindObjectOfType<InventoryController>().GetComponent<Canvas>().enabled = !startIfTrue;
+
+		appleMiniGame.gameObject.SetActive(startIfTrue);
 		if (startIfTrue)
 		{
 			FindObjectOfType<AppleMinigameControls>().GetComponent<SpriteRenderer>().sprite = kaiju.sprite;
@@ -182,5 +188,19 @@ public class KaijuStats : MonoBehaviour
 			appleMiniGame.StartMinigame();
 		}
 
+	}
+
+	public void StartMeatGame(bool startIfTrue)
+	{
+		hungerDisplay.transform.parent.GetComponent<Canvas>().enabled = !startIfTrue;
+		gameObject.GetComponent<SpriteRenderer>().enabled = !startIfTrue;
+		FindObjectOfType<ShopController>().GetComponent<Canvas>().enabled = !startIfTrue;
+		FindObjectOfType<InventoryController>().GetComponent<Canvas>().enabled = !startIfTrue;
+
+		ratMiniGame.gameObject.SetActive(startIfTrue);
+		if (startIfTrue)
+		{
+			ratMiniGame.StartMinigame();
+		}
 	}
 }

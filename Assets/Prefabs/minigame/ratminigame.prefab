@@ -795,6 +795,7 @@ MonoBehaviour:
   score: 0
   scoreText: {fileID: 6241553057176868286}
   timerText: {fileID: 6241553057198080071}
+  meat: {fileID: 11400000, guid: 0db95c64a893ecf40bbd6c81dd7e7714, type: 2}
 --- !u!1 &6241553057569608395
 GameObject:
   m_ObjectHideFlags: 0
