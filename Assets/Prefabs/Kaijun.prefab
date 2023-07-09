@@ -186,16 +186,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingKaiju: {fileID: 11400000, guid: 13e4b87173ea06c4a9e1e4c2d53dbfdb, type: 2}
   kaiju: {fileID: 0}
-  allKaiju:
+  herbKaiju:
   - {fileID: 11400000, guid: 2a72117e1f00f2c4cae778134461bb1a, type: 2}
   - {fileID: 11400000, guid: 38b0643a9e15dce4984106e063655990, type: 2}
   - {fileID: 11400000, guid: 6614b2e95f17e87468a5ee6c0e7a8a36, type: 2}
   - {fileID: 11400000, guid: 79dfc444eacd3d84f87b60d7e5c675b0, type: 2}
-  - {fileID: 11400000, guid: 13e4b87173ea06c4a9e1e4c2d53dbfdb, type: 2}
+  omniKaiju:
+  - {fileID: 11400000, guid: 4e8231d24fee1c3448eb62418c312eb4, type: 2}
+  - {fileID: 11400000, guid: e856fc48fc364d0499b4557448cd7c29, type: 2}
+  - {fileID: 11400000, guid: 734a1667ea1328c4fbd620162202f8d4, type: 2}
+  - {fileID: 11400000, guid: 0f5e1bdd1d998c5479bbc6bb6fb17d71, type: 2}
+  carnKaiju:
   - {fileID: 11400000, guid: ae4dce5cb50a203448255763e9ea3a95, type: 2}
   - {fileID: 11400000, guid: 5b7f117e7a41e9c409097c25b30f05d9, type: 2}
   - {fileID: 11400000, guid: e0d3f76bfa664ea4d98b5ab621f4c0de, type: 2}
   - {fileID: 11400000, guid: 1c7ef2049e39a2f4c8532327d21fdc5f, type: 2}
+  kaijuLvl: 0
   hunger: 0
   health: 0
   destructionNeed: 0
