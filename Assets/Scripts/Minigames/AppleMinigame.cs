@@ -6,7 +6,10 @@ using TMPro;
 
 public class AppleMinigame : MonoBehaviour
 {
-
+    [SerializeField] private CurrencyAddedPanel currencyAddedPanel;
+    [SerializeField] private int perfomanceBonus;
+    [SerializeField, Range(0, 100)] private int perfomancePercentage;
+    [SerializeField] private float gameLength = 30.0f;
     [SerializeField] private float timeRemaining;
     public bool spawn;
     private Vector2 currentSpawn;
@@ -16,6 +19,8 @@ public class AppleMinigame : MonoBehaviour
     public TMP_Text scoreText,
         timerText;
 	public Item fruit;
+
+    private int totalApplesSpawned;
 
     // Start is called before the first frame update
     void Start()
@@ -43,9 +48,18 @@ public class AppleMinigame : MonoBehaviour
     public void StartMinigame()
     {
         spawn = true;
-		score = 0;
-        timeRemaining = 30.0f;
+        totalApplesSpawned = 0;
+        score = 0;
+        timeRemaining = gameLength;
+        ClearApples();
+        GameData.miniGameActive = true;
         StartCoroutine(Spawn());
+    }
+
+    private void ClearApples()
+    {
+        foreach (Transform trans in appleHolder.transform)
+            Destroy(trans.gameObject);
     }
 
     public void StopMinigame()
@@ -57,8 +71,26 @@ public class AppleMinigame : MonoBehaviour
 		{
 			GameData.AddToInventory(fruit);
 		}
-		FindObjectOfType<KaijuStats>().StartFruitGame(false);
-	}
+
+        float scorePercentage = (float)score / totalApplesSpawned * 100f;
+
+        if (scorePercentage >= perfomancePercentage)
+        {
+            ShopController.main.UpdateCurrency(perfomanceBonus);
+            currencyAddedPanel.ShowCurrencyAlert(perfomanceBonus);
+            Invoke("ReturnToMain", 4);
+        }
+        else
+        {
+            ReturnToMain();
+        }
+    }
+
+    private void ReturnToMain()
+    {
+        GameData.miniGameActive = false;
+        FindObjectOfType<KaijuStats>().StartFruitGame(false);
+    }
 
 
     public void UpdateScore()
@@ -73,6 +105,7 @@ public class AppleMinigame : MonoBehaviour
         while (spawn == true)
         {
             Instantiate(applePrefab, GetSpawnPoint(), transform.rotation, appleHolder.transform);
+            totalApplesSpawned++;
 
             yield return new WaitForSeconds(Random.Range(0.5f, 1.5f));
         }

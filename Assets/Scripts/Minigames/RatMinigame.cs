@@ -5,7 +5,10 @@ using TMPro;
 
 public class RatMinigame : MonoBehaviour
 {
-
+    [SerializeField] private CurrencyAddedPanel currencyAddedPanel;
+    [SerializeField] private int perfomanceBonus;
+    [SerializeField, Range(0, 100)] private int perfomancePercentage;
+    [SerializeField] private float gameLength = 30.0f;
     [SerializeField] private float timeRemaining;
     public bool spawn;
     private Vector2 spawnPoint;
@@ -16,6 +19,8 @@ public class RatMinigame : MonoBehaviour
         timerText;
 
 	public Item meat;
+
+    private int totalRatsSpawned;
 
     // Start is called before the first frame update
     void Start()
@@ -44,9 +49,18 @@ public class RatMinigame : MonoBehaviour
     public void StartMinigame()
     {
         spawn = true;
-        timeRemaining = 30.0f;
+        timeRemaining = gameLength;
 		score = 0;
-		StartCoroutine(Spawn());
+        totalRatsSpawned = 0;
+        GameData.miniGameActive = true;
+        ClearRats();
+        StartCoroutine(Spawn());
+    }
+
+    private void ClearRats()
+    {
+        foreach(Transform trans in ratHolder.transform)
+            Destroy(trans.gameObject);
     }
 
     public void StopMinigame()
@@ -58,9 +72,26 @@ public class RatMinigame : MonoBehaviour
 		{
 			GameData.AddToInventory(meat);
 		}
-		FindObjectOfType<KaijuStats>().StartMeatGame(false);
-	}
 
+        float scorePercentage = (float)score / totalRatsSpawned * 100f;
+
+        if (scorePercentage >= perfomancePercentage)
+        {
+            ShopController.main.UpdateCurrency(perfomanceBonus);
+            currencyAddedPanel.ShowCurrencyAlert(perfomanceBonus);
+            Invoke("ReturnToMain", 4);
+        }
+        else
+        {
+            ReturnToMain();
+        }
+    }
+
+    private void ReturnToMain()
+    {
+        GameData.miniGameActive = false;
+        FindObjectOfType<KaijuStats>().StartMeatGame(false);
+    }
 
     public void UpdateScore()
     {
@@ -74,7 +105,7 @@ public class RatMinigame : MonoBehaviour
         while (spawn == true)
         {
             Instantiate(ratPrefab, spawnPoint, transform.rotation, ratHolder.transform);
-
+            totalRatsSpawned++;
             yield return new WaitForSeconds(Random.Range(1.0f, 2.5f));
         }
     }
