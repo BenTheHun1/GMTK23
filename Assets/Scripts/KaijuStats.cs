@@ -96,24 +96,27 @@ public class KaijuStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (hunger > 0f)
-		{
-			hunger -= 0.1f * Time.deltaTime * kaiju.hungerDecay;
-			hungerDisplay.fillAmount = hunger / kaiju.maxHunger;
-		}
-		else
-		{
-			health -= 0.1f * Time.deltaTime * kaiju.healthDecayFromHunger;
-			healthDisplay.fillAmount = health / kaiju.maxHealth;
-		}
+        if (GameData.inGame)
+        {
+			if (hunger > 0f)
+			{
+				hunger -= 0.1f * Time.deltaTime * kaiju.hungerDecay;
+				hungerDisplay.fillAmount = hunger / kaiju.maxHunger;
+			}
+			else
+			{
+				health -= 0.1f * Time.deltaTime * kaiju.healthDecayFromHunger;
+				healthDisplay.fillAmount = health / kaiju.maxHealth;
+			}
 
-		destructionNeed -= 0.1f * Time.deltaTime * kaiju.destructionDecay;
-		destructionDisplay.fillAmount = destructionNeed / kaiju.maxDestructionNeed;
+			destructionNeed -= 0.1f * Time.deltaTime * kaiju.destructionDecay;
+			destructionDisplay.fillAmount = destructionNeed / kaiju.maxDestructionNeed;
 
-		if (health <= 0f)
-		{
-			GameManager.instance.GameOver();
-			Destroy(gameObject);
+			if (health <= 0f)
+			{
+				GameManager.instance.GameOver();
+				Destroy(gameObject);
+			}
 		}
 	}
 
