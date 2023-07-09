@@ -71,8 +71,14 @@ public class FashionShowController : MonoBehaviour
         fashionShowTransform.localScale = Vector3.zero;
         LeanTween.moveX(fashionShowTransform, fashionShowEndPos.x, fashionShowEnterDuration).setEase(fashionShowEnterEaseType).setOnComplete(() => fashionShowActive = true);
         LeanTween.moveY(fashionShowTransform, fashionShowEndPos.y, fashionShowEnterDuration).setEase(fashionShowEnterEaseType);
-        LeanTween.scale(fashionShowTransform, Vector3.one, fashionShowEnterDuration).setEase(fashionShowEnterEaseType);
-
-		FindObjectOfType<FashionShow>().StartShow();
+        LeanTween.scale(fashionShowTransform, Vector3.one, fashionShowEnterDuration).setEase(fashionShowEnterEaseType).setOnComplete(() => FindObjectOfType<FashionShow>().StartShow());
+		;
     }
+
+	public void EndFashionShow()
+	{
+		LeanTween.moveX(fashionShowTransform, fashionShowStartPos.x, fashionShowEnterDuration).setEase(fashionShowEnterEaseType).setOnComplete(() => fashionShowActive = true);
+		LeanTween.moveY(fashionShowTransform, fashionShowStartPos.y, fashionShowEnterDuration).setEase(fashionShowEnterEaseType);
+		LeanTween.scale(fashionShowTransform, Vector3.zero, fashionShowEnterDuration).setEase(fashionShowEnterEaseType);
+	}
 }
