@@ -21,7 +21,7 @@ public class TriggeredTimer : MonoBehaviour
                 timeRemaining -= Time.deltaTime;
                 if (displayTimer)
                 {
-                    timerText.SetText((Mathf.FloorToInt(timeRemaining / 60)).ToString() + ":" + (Mathf.FloorToInt(timeRemaining % 60)).ToString());
+                    timerText.SetText(TimeToString());
                 }
 				if ((int)timeRemaining % 300 == 0)
 				{
@@ -39,10 +39,16 @@ public class TriggeredTimer : MonoBehaviour
         }
     }
 
+    private string TimeToString() => (Mathf.FloorToInt(timeRemaining / 60)).ToString() + ":" + (Mathf.FloorToInt(timeRemaining % 60)).ToString("00");
 
-    public void StartTimer(float time)
+    public void InitializeTimer(float time)
     {
         timeRemaining = time;
+        timerText.SetText(TimeToString());
+    }
+
+    public void StartTimer()
+    {
         isTimerRunning = true;
     }
 
