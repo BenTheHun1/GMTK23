@@ -96,8 +96,8 @@ public class KaijuStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (GameData.inGame)
-		{
+        if (GameData.inGame)
+        {
 			if (hunger > 0f)
 			{
 				hunger -= 0.1f * Time.deltaTime * kaiju.hungerDecay;
@@ -114,6 +114,7 @@ public class KaijuStats : MonoBehaviour
 
 			if (health <= 0f)
 			{
+				GameManager.instance.GameOver();
 				Destroy(gameObject);
 			}
 		}

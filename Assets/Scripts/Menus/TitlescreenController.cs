@@ -114,11 +114,6 @@ public class TitlescreenController : MonoBehaviour
     public void QuitGame()
     {
         if (!transitionActive && !GameData.inGame)
-        {
-            Application.Quit();
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#endif
-        }
+            GameManager.instance.QuitApplication();
     }
 }

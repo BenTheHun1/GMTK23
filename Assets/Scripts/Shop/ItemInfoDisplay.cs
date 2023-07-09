@@ -14,6 +14,6 @@ public class ItemInfoDisplay : MonoBehaviour
 
     public void UpdateItemInformation(string info)
     {
-        itemInfoText.text = info;
+        itemInfoText.text = info.ToString();
     }
 }

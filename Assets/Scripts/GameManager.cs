@@ -6,9 +6,23 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    private PlayerControlSystem playerControlSystem;
+
     private void Awake()
     {
         instance = this;
+        playerControlSystem = new PlayerControlSystem();
+        playerControlSystem.Player.Quit.performed += _ => QuitApplication();
+    }
+
+    private void OnEnable()
+    {
+        playerControlSystem.Enable();
+    }
+
+    private void OnDisable()
+    {
+        playerControlSystem?.Disable();
     }
 
     // Start is called before the first frame update
@@ -26,7 +40,22 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        GameData.inGame = false;
+        FindObjectOfType<GameOverController>().ShowGameOverScreen();
+    }
 
+    public void GameEnd()
+    {
+        GameData.inGame = false;
+        FindObjectOfType<GameOverController>().ShowGameEndScreen();
+    }
+
+    public void QuitApplication()
+    {
+        Application.Quit();
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
     }
 
 }
