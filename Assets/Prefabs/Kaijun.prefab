@@ -203,9 +203,8 @@ MonoBehaviour:
   monsterTypeID: 0
   alignment: 0
   curHat: {fileID: 0}
-  allHats:
-  - {fileID: 11400000, guid: 7a68b92650891f043b67b1c16aca9d97, type: 2}
   appleMiniGame: {fileID: 0}
+  ratMiniGame: {fileID: 0}
 --- !u!58 &5489185712194804721
 CircleCollider2D:
   m_ObjectHideFlags: 0
