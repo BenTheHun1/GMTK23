@@ -108,8 +108,7 @@ public class TitlescreenController : MonoBehaviour
     {
         GetComponent<CanvasGroup>().alpha = 0;
         GetComponent<CanvasGroup>().blocksRaycasts = false;
-        LeanTween.alphaCanvas(whiteScreen, 0f, fadeOutDuration).setEase(fadeOutEaseType).setOnComplete(() => GameManager.instance.Init());
-        transitionActive = false;
+        LeanTween.alphaCanvas(whiteScreen, 0f, fadeOutDuration).setEase(fadeOutEaseType).setOnComplete(() => transitionActive = false);
     }
 
     public void QuitGame()

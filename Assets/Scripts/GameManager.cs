@@ -15,12 +15,13 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         FindObjectOfType<AudioManager>().Play("GameMusic", GameData.GetBGMVolume());
+        FindObjectOfType<TriggeredTimer>().InitializeTimer(3600f);
     }
 
     public void Init()
     {
         GameData.inGame = true;
-        FindObjectOfType<TriggeredTimer>().StartTimer(1f * 60f * 60f);
+        FindObjectOfType<TriggeredTimer>().StartTimer();
     }
 
     public void GameOver()

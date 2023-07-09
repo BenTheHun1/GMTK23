@@ -48,7 +48,6 @@ public class KaijuStats : MonoBehaviour
 		health = startingKaiju.maxHealth;
 		destructionNeed = startingKaiju.maxDestructionNeed;
 
-		FindObjectOfType<TriggeredTimer>().StartTimer(1f * 60f * 60f);
 		LoadKaiju(startingKaiju);
 	}
 
