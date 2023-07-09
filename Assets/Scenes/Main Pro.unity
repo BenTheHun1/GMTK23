@@ -313,10 +313,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TitlescreenUI
       objectReference: {fileID: 0}
-    - target: {fileID: 1372698443574896416, guid: daf7ae01388c4a84dab4c4def3bda732, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1372698443574896420, guid: daf7ae01388c4a84dab4c4def3bda732, type: 3}
       propertyPath: m_Pivot.x
       value: 0
