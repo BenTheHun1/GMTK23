@@ -5,8 +5,12 @@ using TMPro;
 
 public class TriggeredTimer : MonoBehaviour
 {
-
+    [SerializeField] private float fashionShowFrequency = 300f;
+    [SerializeField] private float evolutionFrequency = 900f;
     [SerializeField] private float timeRemaining;
+
+    [SerializeField] private bool debugEndTimer;
+
     public bool isTimerRunning = false;
     public bool displayTimer;
     public TMP_Text timerText;
@@ -23,11 +27,11 @@ public class TriggeredTimer : MonoBehaviour
                 {
                     timerText.SetText(TimeToString());
                 }
-				if ((int)timeRemaining % 300 == 0)
+				if ((int)timeRemaining % fashionShowFrequency == 0)
 				{
 					FindObjectOfType<FashionShow>().MakeFashionShowAvailable();
 				}
-				if ((int)timeRemaining % 900 == 0)
+				if ((int)timeRemaining % evolutionFrequency == 0)
 				{
 					FindObjectOfType<KaijuStats>().TriggerEvolution();
 				}
@@ -35,7 +39,16 @@ public class TriggeredTimer : MonoBehaviour
             else
             {
                 StopTimer();
+                GameManager.instance.GameEnd();
             }
+        }
+
+        if(debugEndTimer && isTimerRunning)
+        {
+            debugEndTimer = false;
+            timeRemaining = 0;
+            StopTimer();
+            GameManager.instance.GameEnd();
         }
     }
 
@@ -59,7 +72,7 @@ public class TriggeredTimer : MonoBehaviour
         timeRemaining = 0;
         if (displayTimer)
         {
-            timerText.SetText("0");
+            timerText.SetText("0:00");
         }
     }
 }

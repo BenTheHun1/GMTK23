@@ -44,6 +44,12 @@ public class GameManager : MonoBehaviour
         FindObjectOfType<GameOverController>().ShowGameOverScreen();
     }
 
+    public void GameEnd()
+    {
+        GameData.inGame = false;
+        FindObjectOfType<GameOverController>().ShowGameEndScreen();
+    }
+
     public void QuitApplication()
     {
         Application.Quit();
