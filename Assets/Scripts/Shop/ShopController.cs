@@ -78,7 +78,7 @@ public class ShopController : MonoBehaviour
     /// </summary>
     public void ToggleShop()
     {
-        if (!transitionActive && currentMenuID <= (int)ShopType.MAIN && !InventoryController.main.IsInventoryActive())
+        if (!transitionActive && GameData.inGame && currentMenuID <= (int)ShopType.MAIN && !InventoryController.main.IsInventoryActive())
         {
             shopActive = !shopActive;
             transitionActive = true;
