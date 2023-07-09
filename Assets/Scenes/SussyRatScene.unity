@@ -2110,6 +2110,10 @@ PrefabInstance:
       propertyPath: whiteScreen
       value: 
       objectReference: {fileID: 482576990}
+    - target: {fileID: 1372698443574896421, guid: daf7ae01388c4a84dab4c4def3bda732, type: 3}
+      propertyPath: fadeInEaseType
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1372698443941037958, guid: daf7ae01388c4a84dab4c4def3bda732, type: 3}
       propertyPath: m_IsActive
       value: 1
