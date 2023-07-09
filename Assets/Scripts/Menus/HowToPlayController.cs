@@ -6,7 +6,9 @@ using TMPro;
 
 public class HowToPlayController : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI kaijuName;
     [SerializeField] private RectTransform howToPlayPanel;
+    [SerializeField] private RectTransform namePanel;
     [SerializeField] private TextMeshProUGUI howToPlayText;
     [SerializeField] private TextMeshProUGUI pageNumberText;
     [SerializeField] private string[] howToPlayPassages;
@@ -14,6 +16,11 @@ public class HowToPlayController : MonoBehaviour
     [SerializeField] private Button previousButton;
     [SerializeField] private Button nextButton;
     [SerializeField] private GameObject continueButton;
+
+    [SerializeField] private TMP_InputField nameInput;
+
+    [SerializeField] private float nameInputExitDuration;
+    [SerializeField] private LeanTweenType nameInputExitEaseType;
 
     private bool tutorialRead = false;
     private int currentTutorialPassage = 0;
@@ -51,6 +58,17 @@ public class HowToPlayController : MonoBehaviour
     public void Dismiss()
     {
         howToPlayPanel.gameObject.SetActive(false);
-        GameManager.instance.Init();
+        namePanel.gameObject.SetActive(true);
+    }
+
+    public void SetName()
+    {
+        string nameData = nameInput.text.ToLower();
+        GameData.kaijuName = char.ToUpper(nameData[0]) + nameData.Substring(1).ToLower();
+
+        if (kaijuName != null)
+            kaijuName.text = GameData.kaijuName;
+
+        LeanTween.scale(namePanel.gameObject, Vector3.zero, nameInputExitDuration).setEase(nameInputExitEaseType).setOnComplete(() => GameManager.instance.Init());
     }
 }
