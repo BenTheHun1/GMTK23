@@ -46,11 +46,26 @@ public class GameOverController : MonoBehaviour
 		gameEndMessageText.text = "Humanity has come to attack " + GameData.kaijuName + ".\n";
 		if (FindObjectOfType<KaijuStats>().kaijuLvl >= 2)
 		{
-			gameEndMessageText.text += "You raised your Kaiju right, and they defended themselves.";
+			if (FindObjectOfType<KaijuStats>().kaiju.kaijuType == Kaiju.type.carnivore)
+			{
+				gameEndMessageText.text += "Your carnivorous Kaiju fought off the attacking soldiers. ";
+			}
+			else if (FindObjectOfType<KaijuStats>().kaiju.kaijuType == Kaiju.type.herbivore)
+			{
+				gameEndMessageText.text += "The attacking soldiers couldn't penetrate your herbivorous Kaiju's shell. ";
+			}
+			else if (FindObjectOfType<KaijuStats>().kaiju.kaijuType == Kaiju.type.omnivore)
+			{
+				gameEndMessageText.text += "Your omnivorous Kaiju flees into the ocean, away from the attacking soldiers. ";
+			}
+
+			gameEndMessageText.text += GameData.kaijuName + " lives to destroy Humanity another day.";
+
+
 		}
 		else
 		{
-			gameEndMessageText.text += "Your Kaiju was destroyed by Humanity. Curses!";
+			gameEndMessageText.text += "Your Kaiju was too weak, and was killed by the attacking soldiers.";
 		}
 
         LeanTween.alphaCanvas(canvasGroup, 1f, gameOverAlphaDuration).setEase(gameOverAlphaEaseType);
