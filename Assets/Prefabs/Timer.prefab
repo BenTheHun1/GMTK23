@@ -46,9 +46,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fashionShowFrequency: 300
   evolutionFrequency: 900
-  totalTime: 1800
+  totalTime: 2100
   timeRemaining: 0
   debugEndTimer: 0
   isTimerRunning: 0
   displayTimer: 1
   timerText: {fileID: 0}
+  evolveTimes: []
+  curEvolve: 0
+  fashionTimes: []
+  curFashion: 0
