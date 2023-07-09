@@ -20,6 +20,8 @@ public class Kaiju : ScriptableObject
 
 	public Sprite sprite;
 	public Vector3 hatPoint;
-	public string typeName;
+
+	public enum type { herbivore, omnivore, carnivore, original};
+	public type kaijuType;
 	
 }

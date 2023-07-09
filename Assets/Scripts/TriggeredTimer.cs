@@ -23,7 +23,15 @@ public class TriggeredTimer : MonoBehaviour
                 {
                     timerText.SetText(TimeToString());
                 }
-            }
+				if ((int)timeRemaining % 300 == 0)
+				{
+					FindObjectOfType<FashionShow>().MakeFashionShowAvailable();
+				}
+				if ((int)timeRemaining % 900 == 0)
+				{
+					FindObjectOfType<KaijuStats>().TriggerEvolution();
+				}
+			}
             else
             {
                 StopTimer();

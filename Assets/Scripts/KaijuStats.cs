@@ -8,7 +8,10 @@ public class KaijuStats : MonoBehaviour
 {
 	[Tooltip("The initial Kaiju.")] public Kaiju startingKaiju;
 	[Tooltip("The current Kaiju.")] public Kaiju kaiju;
-	[Tooltip("All possible Kaiju (with different IDs).")] public Kaiju[] allKaiju;
+	[Tooltip("All herbivore Kaiju")] public Kaiju[] herbKaiju;
+	[Tooltip("All omniivore Kaiju")] public Kaiju[] omniKaiju;
+	[Tooltip("All carnivore Kaiju")] public Kaiju[] carnKaiju;
+	public int kaijuLvl;
 
 	[Tooltip("Stats")] public float hunger, health, destructionNeed;
 	private Image hungerDisplay, healthDisplay, destructionDisplay;
@@ -148,23 +151,44 @@ public class KaijuStats : MonoBehaviour
 
 	public void TriggerEvolution()
 	{
-		if (alignment > 0)
+		if (alignment > 25f)
 		{
-			monsterTypeID++;
+			if (kaiju.kaijuType == Kaiju.type.carnivore || kaiju.kaijuType == Kaiju.type.original)
+			{
+				kaijuLvl++;
+			}
+
+			LoadKaiju(carnKaiju[kaijuLvl - 1]);
 		}
-		if (alignment < 0)
+		else if (alignment < -25f)
 		{
-			monsterTypeID--;
+			if (kaiju.kaijuType == Kaiju.type.herbivore || kaiju.kaijuType == Kaiju.type.original)
+			{
+				kaijuLvl++;
+			}
+
+			LoadKaiju(herbKaiju[kaijuLvl - 1]);
 		}
+		else
+		{
+			if (kaiju.kaijuType == Kaiju.type.omnivore || kaiju.kaijuType == Kaiju.type.original)
+			{
+				kaijuLvl++;
+			}
+
+			LoadKaiju(omniKaiju[kaijuLvl - 1]);
+		}
+
 		alignment = 0;
-		foreach (Kaiju k in allKaiju)
+
+		/*foreach (Kaiju k in allKaiju)
 		{
 			if (k.id == monsterTypeID)
 			{
 				LoadKaiju(k);
 				break;
 			}
-		}
+		}*/
 	}
 
 	public void Destruction()
