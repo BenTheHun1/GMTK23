@@ -414,14 +414,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1553480386109223952, guid: b4dcb6acd940c18458cf6321273412ba, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1553480386109223955, guid: b4dcb6acd940c18458cf6321273412ba, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1
-      objectReference: {fileID: 0}
     - target: {fileID: 1553480386762779084, guid: b4dcb6acd940c18458cf6321273412ba, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -506,30 +498,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1553480386762779087, guid: b4dcb6acd940c18458cf6321273412ba, type: 3}
-      propertyPath: howToPlayPassages.Array.data[0]
-      value: You have a little Kaiju to raise! Humanity will attack in 30 minutes.
-        Until then, keep them fed, and their destructive impulses satiated.
-      objectReference: {fileID: 0}
-    - target: {fileID: 1553480386762779087, guid: b4dcb6acd940c18458cf6321273412ba, type: 3}
-      propertyPath: howToPlayPassages.Array.data[1]
-      value: You can buy food in the Shop, or you can play two different mini games.
-        Be conscious of what you are feeding your Kaiju, as it may influence how
-        it develops.
-      objectReference: {fileID: 0}
-    - target: {fileID: 1553480386762779087, guid: b4dcb6acd940c18458cf6321273412ba, type: 3}
-      propertyPath: howToPlayPassages.Array.data[2]
-      value: To get money, your Kaiju can participate in fashion shows! A new fashion
-        show starts every 5 minutes, and your performance is based on the fanciness
-        of your hat and your Kaiju both.
-      objectReference: {fileID: 0}
     - target: {fileID: 1553480386762779184, guid: b4dcb6acd940c18458cf6321273412ba, type: 3}
       propertyPath: m_Name
       value: HowToPlayCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 1553480386762779184, guid: b4dcb6acd940c18458cf6321273412ba, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4dcb6acd940c18458cf6321273412ba, type: 3}

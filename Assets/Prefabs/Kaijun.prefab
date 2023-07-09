@@ -5012,12 +5012,12 @@ MonoBehaviour:
   hunger: 0
   health: 0
   destructionNeed: 0
-  Name: Pochita
   monsterTypeID: 0
   alignment: 0
   curHat: {fileID: 0}
   appleMiniGame: {fileID: 0}
   ratMiniGame: {fileID: 0}
+  evolveNotice: {fileID: 0}
 --- !u!58 &5489185712194804721
 CircleCollider2D:
   m_ObjectHideFlags: 0

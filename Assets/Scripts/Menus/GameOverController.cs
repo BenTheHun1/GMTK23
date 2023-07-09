@@ -43,7 +43,15 @@ public class GameOverController : MonoBehaviour
         gameEndTransform.gameObject.SetActive(true);
 		BG.gameObject.SetActive(true);
 
-		gameEndMessageText.text = "The time has passed.";
+		gameEndMessageText.text = "Humanity has come to attack " + GameData.kaijuName + ".\n";
+		if (FindObjectOfType<KaijuStats>().kaijuLvl >= 2)
+		{
+			gameEndMessageText.text += "You raised your Kaiju right, and they defended themselves.";
+		}
+		else
+		{
+			gameEndMessageText.text += "Your Kaiju was destroyed by Humanity. Curses!";
+		}
 
         LeanTween.alphaCanvas(canvasGroup, 1f, gameOverAlphaDuration).setEase(gameOverAlphaEaseType);
     }
