@@ -38,6 +38,14 @@ public class AppleMinigameControls : MonoBehaviour
         {
             moveInput = playerCons.Player.Move.ReadValue<Vector2>();
             moveInput.y = 0f;
+			if (moveInput.x < 0f)
+			{
+				rbKaiju.gameObject.GetComponent<SpriteRenderer>().flipX = true;
+			}
+			if (moveInput.x > 0f)
+			{
+				rbKaiju.gameObject.GetComponent<SpriteRenderer>().flipX = false;
+			}
             rbKaiju.transform.Translate(moveInput * speed * 0.1f);
         }
     }
