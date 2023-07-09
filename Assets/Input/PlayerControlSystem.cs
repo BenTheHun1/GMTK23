@@ -80,6 +80,15 @@ public partial class @PlayerControlSystem: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Any Button"",
+                    ""type"": ""Button"",
+                    ""id"": ""691e3c27-a97f-44dd-8653-a857b0fcafce"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -333,6 +342,17 @@ public partial class @PlayerControlSystem: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Toggle Shop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5e3bc4f7-6799-45a7-a74b-2225430460e7"",
+                    ""path"": ""<Keyboard>/anyKey"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Any Button"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -974,6 +994,7 @@ public partial class @PlayerControlSystem: IInputActionCollection2, IDisposable
         m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
         m_Player_UseItem = m_Player.FindAction("Use Item", throwIfNotFound: true);
         m_Player_ToggleShop = m_Player.FindAction("Toggle Shop", throwIfNotFound: true);
+        m_Player_AnyButton = m_Player.FindAction("Any Button", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1057,6 +1078,7 @@ public partial class @PlayerControlSystem: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Inventory;
     private readonly InputAction m_Player_UseItem;
     private readonly InputAction m_Player_ToggleShop;
+    private readonly InputAction m_Player_AnyButton;
     public struct PlayerActions
     {
         private @PlayerControlSystem m_Wrapper;
@@ -1067,6 +1089,7 @@ public partial class @PlayerControlSystem: IInputActionCollection2, IDisposable
         public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
         public InputAction @UseItem => m_Wrapper.m_Player_UseItem;
         public InputAction @ToggleShop => m_Wrapper.m_Player_ToggleShop;
+        public InputAction @AnyButton => m_Wrapper.m_Player_AnyButton;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1094,6 +1117,9 @@ public partial class @PlayerControlSystem: IInputActionCollection2, IDisposable
             @ToggleShop.started += instance.OnToggleShop;
             @ToggleShop.performed += instance.OnToggleShop;
             @ToggleShop.canceled += instance.OnToggleShop;
+            @AnyButton.started += instance.OnAnyButton;
+            @AnyButton.performed += instance.OnAnyButton;
+            @AnyButton.canceled += instance.OnAnyButton;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1116,6 +1142,9 @@ public partial class @PlayerControlSystem: IInputActionCollection2, IDisposable
             @ToggleShop.started -= instance.OnToggleShop;
             @ToggleShop.performed -= instance.OnToggleShop;
             @ToggleShop.canceled -= instance.OnToggleShop;
+            @AnyButton.started -= instance.OnAnyButton;
+            @AnyButton.performed -= instance.OnAnyButton;
+            @AnyButton.canceled -= instance.OnAnyButton;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1358,6 +1387,7 @@ public partial class @PlayerControlSystem: IInputActionCollection2, IDisposable
         void OnInventory(InputAction.CallbackContext context);
         void OnUseItem(InputAction.CallbackContext context);
         void OnToggleShop(InputAction.CallbackContext context);
+        void OnAnyButton(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

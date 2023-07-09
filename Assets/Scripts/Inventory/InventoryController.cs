@@ -55,27 +55,30 @@ public class InventoryController : MonoBehaviour
     /// </summary>
     public void ToggleInventory()
     {
-        isInventoryActive = !isInventoryActive;
-
-        if (!isInventoryActive)
+        if (!transitionActive && GameData.inGame)
         {
-            //Hide any active tooltips if closing inventory
-            foreach (var i in FindObjectsOfType<GridPieceEvent>())
+            isInventoryActive = !isInventoryActive;
+
+            if (!isInventoryActive)
             {
-                //Make sure nothing is hovered
-                i.ForceUnhover();
+                //Hide any active tooltips if closing inventory
+                foreach (var i in FindObjectsOfType<GridPieceEvent>())
+                {
+                    //Make sure nothing is hovered
+                    i.ForceUnhover();
+                }
             }
+
+            //Debug.Log("Inventory Active: " + isInventoryActive);
+            ToggleInventoryAnimation();
+
+            //Display all of the items in the inventory
+            if (isInventoryActive)
+                DisplayInventory();
+
+            else
+                activeInventoryID = -1;
         }
-
-        //Debug.Log("Inventory Active: " + isInventoryActive);
-        ToggleInventoryAnimation();
-
-        //Display all of the items in the inventory
-        if (isInventoryActive)
-            DisplayInventory();
-
-        else
-            activeInventoryID = -1;
     }
 
     /// <summary>
