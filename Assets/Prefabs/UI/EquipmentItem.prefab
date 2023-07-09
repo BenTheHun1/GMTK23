@@ -87,6 +87,8 @@ GameObject:
   - component: {fileID: 6172138839431409141}
   - component: {fileID: 4664067716348748705}
   - component: {fileID: 5800223623840666877}
+  - component: {fileID: 1266788145484587448}
+  - component: {fileID: 7750784149812208481}
   m_Layer: 5
   m_Name: EquipmentItem
   m_TagString: Untagged
@@ -189,6 +191,33 @@ MonoBehaviour:
   itemImage: {fileID: 2767525062305559114}
   itemNameText: {fileID: 4492863076822457500}
   equipText: {fileID: 1052537994922000964}
+--- !u!114 &1266788145484587448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4876655652837805058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+--- !u!114 &7750784149812208481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4876655652837805058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ee51442426d92040a6b1dbcf42f812f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonHover: ButtonHover02
+  buttonClick: ButtonClick02
 --- !u!1 &5747048733877255183
 GameObject:
   m_ObjectHideFlags: 0

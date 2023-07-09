@@ -31,6 +31,8 @@ public class GameOverController : MonoBehaviour
         gameOverTransform.gameObject.SetActive(true);
 		BG.gameObject.SetActive(true);
 
+        GameManager.instance.StopMusic();
+
 		deathMessageText.text = GameData.kaijuName + " Has Passed Away.";
 
         LeanTween.alphaCanvas(canvasGroup, 1f, gameOverAlphaDuration).setEase(gameOverAlphaEaseType);
@@ -53,6 +55,7 @@ public class GameOverController : MonoBehaviour
     /// </summary>
     public void Restart()
     {
+        GameManager.instance.StopMusic();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

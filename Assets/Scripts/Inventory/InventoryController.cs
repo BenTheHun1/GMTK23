@@ -22,8 +22,6 @@ public class InventoryController : MonoBehaviour
 
     public static InventoryController main;
 
-    private bool transitionActive = false;
-
     private void Awake()
     {
         main = this;
@@ -55,7 +53,7 @@ public class InventoryController : MonoBehaviour
     /// </summary>
     public void ToggleInventory()
     {
-        if (!transitionActive && GameData.inGame)
+        if (!GameData.transitionActive && GameData.inGame)
         {
             isInventoryActive = !isInventoryActive;
 
@@ -86,10 +84,10 @@ public class InventoryController : MonoBehaviour
     /// </summary>
     private void ToggleInventoryAnimation()
     {
-        if (!transitionActive && !ShopController.main.IsShopActive())
+        if (!GameData.transitionActive && !ShopController.main.IsShopActive())
         {
-            transitionActive = true;
-            LeanTween.moveX(inventoryUI, isInventoryActive ? inventoryDisplayedPos : inventoryHiddenPos, inventoryAnimationDuration).setEase(inventoryEaseType).setOnComplete(() => transitionActive = false);
+            GameData.transitionActive = true;
+            LeanTween.moveX(inventoryUI, isInventoryActive ? inventoryDisplayedPos : inventoryHiddenPos, inventoryAnimationDuration).setEase(inventoryEaseType).setOnComplete(() => GameData.transitionActive = false);
         }
     }
 

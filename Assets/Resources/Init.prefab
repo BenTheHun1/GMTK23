@@ -47,9 +47,75 @@ MonoBehaviour:
   bgmMixer: {fileID: 5802316482864546721, guid: 21ee9c6241ae4ff499142ca31ddaa289, type: 2}
   sfxMixer: {fileID: 4279340188021939522, guid: a3ea98e4f5c892e4bb327cdeaf6cea0c, type: 2}
   sounds:
+  - name: TitlescreenMusic
+    clip: {fileID: 8300000, guid: 770a671f5fe65a448b375f6f54debe26, type: 3}
+    pitch: 1
+    loop: 1
+    soundType: 0
+    source: {fileID: 0}
   - name: GameMusic
     clip: {fileID: 8300000, guid: 91ee955d3d3aa9c459b54de8782df8b1, type: 3}
     pitch: 1
     loop: 1
     soundType: 0
+    source: {fileID: 0}
+  - name: ShopMusic
+    clip: {fileID: 8300000, guid: a5ba38af8993b5f468fb8789b17104a4, type: 3}
+    pitch: 1
+    loop: 1
+    soundType: 0
+    source: {fileID: 0}
+  - name: ButtonHover
+    clip: {fileID: 8300000, guid: dd39bf4c38be4b043aaa1bd6c0ba5dcc, type: 3}
+    pitch: 1
+    loop: 0
+    soundType: 1
+    source: {fileID: 0}
+  - name: ButtonClick
+    clip: {fileID: 8300000, guid: 19420c0808ba9b84aadb8ed2406285fc, type: 3}
+    pitch: 1
+    loop: 0
+    soundType: 1
+    source: {fileID: 0}
+  - name: ButtonClick02
+    clip: {fileID: 8300000, guid: f1e86801484e19540a998a1ca1badb2d, type: 3}
+    pitch: 1
+    loop: 0
+    soundType: 1
+    source: {fileID: 0}
+  - name: ButtonHover02
+    clip: {fileID: 8300000, guid: 9db98e47b2f693547b9c5202a7c10cb2, type: 3}
+    pitch: 1
+    loop: 0
+    soundType: 1
+    source: {fileID: 0}
+  - name: StartScreen
+    clip: {fileID: 8300000, guid: ecb1fc66e33420742af2a4aa1b168c42, type: 3}
+    pitch: 1
+    loop: 0
+    soundType: 1
+    source: {fileID: 0}
+  - name: StartGameTone
+    clip: {fileID: 8300000, guid: c07e9ae8d7b2a4d4ba6b4f560e22e1c2, type: 3}
+    pitch: 1
+    loop: 0
+    soundType: 1
+    source: {fileID: 0}
+  - name: GameOver
+    clip: {fileID: 8300000, guid: 8ce0673185ed8b74ea68472ea03738c6, type: 3}
+    pitch: 1
+    loop: 0
+    soundType: 1
+    source: {fileID: 0}
+  - name: FeedHerbivore
+    clip: {fileID: 8300000, guid: 88d4301a74237334fb3505610b8b43ad, type: 3}
+    pitch: 1
+    loop: 0
+    soundType: 1
+    source: {fileID: 0}
+  - name: FeedCarnivore
+    clip: {fileID: 8300000, guid: 2231c1eb7fabc1f46b74bd39dd9ba7ef, type: 3}
+    pitch: 1
+    loop: 0
+    soundType: 1
     source: {fileID: 0}

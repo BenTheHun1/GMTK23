@@ -35,7 +35,6 @@ public class ShopController : MonoBehaviour
     private Hat[] equipmentItemInstances;
 
     private bool shopActive = false;
-    private bool transitionActive = false;
 
     private int currentMenuID = -1;
     private int exitMenuID = -1;
@@ -78,16 +77,18 @@ public class ShopController : MonoBehaviour
     /// </summary>
     public void ToggleShop()
     {
-        if (!transitionActive && GameData.inGame && currentMenuID <= (int)ShopType.MAIN && !InventoryController.main.IsInventoryActive())
+        if (!GameData.transitionActive && GameData.inGame && currentMenuID <= (int)ShopType.MAIN && !InventoryController.main.IsInventoryActive())
         {
             shopActive = !shopActive;
-            transitionActive = true;
+            GameData.transitionActive = true;
 
             currentMenuID = shopActive ? 0 : -1;
 
+            GameManager.instance.ChangeMusic(shopActive? "ShopMusic": "GameMusic");
+
             //Move the shop menu on the y-axis when activating
             LeanTween.moveY(mainShopTransform, shopActive ? shopEndPos : shopStartPos, shopActive ? shopEnterAnimationDuration : shopExitAnimationDuration).setEase(shopActive ? shopEnterEaseType : shopExitEaseType)
-                .setOnComplete(() => transitionActive = false);
+                .setOnComplete(() => GameData.transitionActive = false);
 
             MainShopAnimation();
         }
@@ -136,7 +137,7 @@ public class ShopController : MonoBehaviour
     /// </summary>
     private void MainShopAnimation()
     {
-        transitionActive = true;
+        GameData.transitionActive = true;
         float endingAlpha = currentMenuID == (int)ShopType.MAIN ? 1 : 0;
 
         float delay = 0;
@@ -154,7 +155,7 @@ public class ShopController : MonoBehaviour
 
         //Fade in / out the main shop menu when entering / exiting
         shopMenus[(int)ShopType.MAIN].GetComponent<CanvasGroup>().alpha = endingAlpha == 0 ? 1 : 0;
-        LeanTween.delayedCall(delay, () => LeanTween.alphaCanvas(shopMenus[(int)ShopType.MAIN].GetComponent<CanvasGroup>(), endingAlpha, shopFadeAnimationDuration).setEase(shopFadeEaseType).setOnComplete(() => transitionActive = false));
+        LeanTween.delayedCall(delay, () => LeanTween.alphaCanvas(shopMenus[(int)ShopType.MAIN].GetComponent<CanvasGroup>(), endingAlpha, shopFadeAnimationDuration).setEase(shopFadeEaseType).setOnComplete(() => GameData.transitionActive = false));
     }
 
     /// <summary>
@@ -162,7 +163,7 @@ public class ShopController : MonoBehaviour
     /// </summary>
     private void SubShopAnimation(ShopType subShop)
     {
-        transitionActive = true;
+        GameData.transitionActive = true;
         float startingScale = currentMenuID == (int)subShop ? 0 : 1;
         float endingScale = currentMenuID == (int)subShop ? 1 : 0;
 
@@ -172,7 +173,7 @@ public class ShopController : MonoBehaviour
         {
             //When entering the food shop, scale the Y and then fade in the labels
             LeanTween.scaleY(shopMenus[(int)subShop], endingScale, subShopAnimationDuration).setEase(subShopAnimationEaseType).setOnComplete(() =>
-            LeanTween.alphaCanvas(shopMenus[(int)subShop].GetComponentInChildren<CanvasGroup>(), endingScale, fadeInLabelDuration).setEase(fadeInLabelEaseType).setOnComplete(() => transitionActive = false));
+            LeanTween.alphaCanvas(shopMenus[(int)subShop].GetComponentInChildren<CanvasGroup>(), endingScale, fadeInLabelDuration).setEase(fadeInLabelEaseType).setOnComplete(() => GameData.transitionActive = false));
 
             string shopMessage = "";
 
@@ -194,7 +195,7 @@ public class ShopController : MonoBehaviour
         {
             //When exiting the sub shop, fade out the labels and then scale the Y
             LeanTween.alphaCanvas(shopMenus[(int)subShop].GetComponentInChildren<CanvasGroup>(), endingScale, fadeInLabelDuration).setEase(fadeInLabelEaseType).setOnComplete(() =>
-            LeanTween.scaleY(shopMenus[(int)subShop], endingScale, subShopAnimationDuration).setEase(subShopAnimationEaseType).setOnComplete(() => transitionActive = false));
+            LeanTween.scaleY(shopMenus[(int)subShop], endingScale, subShopAnimationDuration).setEase(subShopAnimationEaseType).setOnComplete(() => GameData.transitionActive = false));
         }
     }
 

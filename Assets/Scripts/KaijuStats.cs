@@ -102,14 +102,18 @@ public class KaijuStats : MonoBehaviour
 			{
 				hunger -= 0.1f * Time.deltaTime * kaiju.hungerDecay;
 				hungerDisplay.fillAmount = hunger / kaiju.maxHunger;
+				hunger = Mathf.Clamp(hunger, 0f, kaiju.maxHunger);
 			}
 			else
 			{
 				health -= 0.1f * Time.deltaTime * kaiju.healthDecayFromHunger;
 				healthDisplay.fillAmount = health / kaiju.maxHealth;
+				health = Mathf.Clamp(health, 0f, kaiju.maxHealth);
 			}
 
 			destructionNeed -= 0.1f * Time.deltaTime * kaiju.destructionDecay;
+			destructionNeed = Mathf.Clamp(destructionNeed, 0f, kaiju.maxDestructionNeed);
+
 			destructionDisplay.fillAmount = destructionNeed / kaiju.maxDestructionNeed;
 
 			if (health <= 0f)
@@ -151,6 +155,12 @@ public class KaijuStats : MonoBehaviour
 		{
 			hunger = kaiju.maxHunger;
 		}
+
+
+		if(amount > 0)
+			FindObjectOfType<AudioManager>().PlayOneShot("FeedCarnivore", GameData.GetSFXVolume());
+		else
+			FindObjectOfType<AudioManager>().PlayOneShot("FeedHerbivore", GameData.GetSFXVolume());
 	}
 
 	public void TriggerEvolution()

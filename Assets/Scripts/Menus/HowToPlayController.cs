@@ -63,16 +63,18 @@ public class HowToPlayController : MonoBehaviour
 
     public void SetName()
     {
-        string nameData = nameInput.text.ToLower();
-		if (nameData != "")
-		{
-			GameData.kaijuName = char.ToUpper(nameData[0]) + nameData.Substring(1).ToLower();
+        string nameData = nameInput.text.ToUpper();
 
-			if (kaijuName != null)
-				kaijuName.text = GameData.kaijuName;
+        if (nameData == "")
+            nameData = "KAIJU";
 
-			LeanTween.scale(namePanel.gameObject, Vector3.zero, nameInputExitDuration).setEase(nameInputExitEaseType).setOnComplete(() => GameManager.instance.Init());
-		}
-        
+        Debug.Log("Kaiju Name: " + nameData);
+
+        GameData.kaijuName = nameData;
+
+        if (kaijuName != null)
+            kaijuName.text = GameData.kaijuName;
+
+        LeanTween.scale(namePanel.gameObject, Vector3.zero, nameInputExitDuration).setEase(nameInputExitEaseType).setOnComplete(() => GameManager.instance.Init());
     }
 }
