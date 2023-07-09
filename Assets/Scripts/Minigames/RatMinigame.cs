@@ -15,12 +15,13 @@ public class RatMinigame : MonoBehaviour
     public TMP_Text scoreText,
         timerText;
 
+	public Item meat;
+
     // Start is called before the first frame update
     void Start()
     {
         spawnPoint = new Vector2(0, 7);
-        score = 0;
-        StartMinigame();
+        //StartMinigame();
     }
 
     // Update is called once per frame
@@ -44,7 +45,8 @@ public class RatMinigame : MonoBehaviour
     {
         spawn = true;
         timeRemaining = 30.0f;
-        StartCoroutine(Spawn());
+		score = 0;
+		StartCoroutine(Spawn());
     }
 
     public void StopMinigame()
@@ -52,7 +54,12 @@ public class RatMinigame : MonoBehaviour
         timerText.SetText("0");
         timeRemaining = 0;
         spawn = false;
-    }
+		for (int i = 0; i < score; i++)
+		{
+			GameData.AddToInventory(meat);
+		}
+		FindObjectOfType<KaijuStats>().StartMeatGame(false);
+	}
 
 
     public void UpdateScore()

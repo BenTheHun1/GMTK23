@@ -2066,6 +2066,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: appleminigame
       objectReference: {fileID: 0}
+    - target: {fileID: 863172904381925714, guid: c82e4b3ad666b6543b61620abab6b655, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 863172904381925724, guid: c82e4b3ad666b6543b61620abab6b655, type: 3}
       propertyPath: m_RootOrder
       value: 9

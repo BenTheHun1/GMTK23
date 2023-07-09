@@ -17,6 +17,6 @@ MonoBehaviour:
   description: No idea who this person is.
   price: 100
   quality: -1
-  itemImage: {fileID: 21300000, guid: cea2c9bf87b0c4dfdafb697a3ff00959, type: 3}
+  itemImage: {fileID: 21300000, guid: eae5caa4c1d38a14aa101e97818d9866, type: 3}
   imageColor: {r: 1, g: 1, b: 1, a: 1}
   available: 1
