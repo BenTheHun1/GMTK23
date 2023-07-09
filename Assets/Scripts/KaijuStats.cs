@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,7 +17,6 @@ public class KaijuStats : MonoBehaviour
 	[Tooltip("Stats")] public float hunger, health, destructionNeed;
 	private Image hungerDisplay, healthDisplay, destructionDisplay;
 
-	[Tooltip("The Kaiju's Name.")] public string Name; //Add way to display and edit
 	[Tooltip("The Kaiju's ID")] public int monsterTypeID;
 	[Tooltip("Current alignment. Positive is carnivore, negative is herbivore.")] public int alignment;
 
@@ -26,6 +26,8 @@ public class KaijuStats : MonoBehaviour
 
 	public AppleMinigame appleMiniGame;
 	public RatMinigame ratMiniGame;
+	private float hungerMultiply = 1f;
+	public GameObject evolveNotice;
 
 
 	// Start is called before the first frame update
@@ -52,6 +54,12 @@ public class KaijuStats : MonoBehaviour
 		destructionNeed = startingKaiju.maxDestructionNeed;
 
 		LoadKaiju(startingKaiju);
+	}
+
+	public void EvolveNotice()
+	{
+		evolveNotice.GetComponent<TextMeshProUGUI>().text = GameData.kaijuName + " Evolved!";
+		LeanTween.moveLocalY(evolveNotice, -100f, 1f).setOnComplete(() => LeanTween.moveLocalY(evolveNotice, -650f, 1f));
 	}
 
 	public void LoadHat(Hat newHat)
@@ -100,7 +108,7 @@ public class KaijuStats : MonoBehaviour
         {
 			if (hunger > 0f)
 			{
-				hunger -= 0.1f * Time.deltaTime * kaiju.hungerDecay;
+				hunger -= 0.1f * Time.deltaTime * kaiju.hungerDecay * hungerMultiply;
 				hungerDisplay.fillAmount = hunger / kaiju.maxHunger;
 				hunger = Mathf.Clamp(hunger, 0f, kaiju.maxHunger);
 			}
@@ -111,10 +119,16 @@ public class KaijuStats : MonoBehaviour
 				health = Mathf.Clamp(health, 0f, kaiju.maxHealth);
 			}
 
-			destructionNeed -= 0.1f * Time.deltaTime * kaiju.destructionDecay;
-			destructionNeed = Mathf.Clamp(destructionNeed, 0f, kaiju.maxDestructionNeed);
-
-			destructionDisplay.fillAmount = destructionNeed / kaiju.maxDestructionNeed;
+			if (destructionNeed > 0f)
+			{
+				destructionNeed -= 0.1f * Time.deltaTime * kaiju.destructionDecay;
+				destructionDisplay.fillAmount = destructionNeed / kaiju.maxDestructionNeed;
+				hungerMultiply = 1f;
+			}
+			else
+			{
+				hungerMultiply = 2f;
+			}
 
 			if (health <= 0f)
 			{
@@ -194,6 +208,7 @@ public class KaijuStats : MonoBehaviour
 		}
 
 		alignment = 0;
+		EvolveNotice();
 
 		/*foreach (Kaiju k in allKaiju)
 		{
