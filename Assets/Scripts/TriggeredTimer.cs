@@ -14,7 +14,7 @@ public class TriggeredTimer : MonoBehaviour
 
     void Update()
     {
-        if (isTimerRunning)
+        if (isTimerRunning && GameData.inGame)
         {
             if(timeRemaining >= 0)
             {

@@ -112,6 +112,7 @@ public class KaijuStats : MonoBehaviour
 
 		if (health <= 0f)
 		{
+			GameManager.instance.GameOver();
 			Destroy(gameObject);
 		}
 	}
