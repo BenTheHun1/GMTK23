@@ -20,6 +20,7 @@ public class TriggeredTimer : MonoBehaviour
 	public int curEvolve;
 	public List<float> fashionTimes;
 	public int curFashion;
+	public float timeSpeed = 1f;
 
     void Update()
     {
@@ -27,20 +28,26 @@ public class TriggeredTimer : MonoBehaviour
         {
             if(timeRemaining >= 0)
             {
-                timeRemaining -= Time.deltaTime;
+                timeRemaining -= Time.deltaTime * timeSpeed;
                 if (displayTimer)
                 {
                     timerText.SetText(TimeToString());
                 }
-				if ((int)timeRemaining == evolveTimes[curEvolve])
+				if (curEvolve < evolveTimes.Count)
 				{
-					curEvolve++;
-					FindObjectOfType<KaijuStats>().TriggerEvolution();
+					if ((int)timeRemaining == evolveTimes[curEvolve])
+					{
+						curEvolve++;
+						FindObjectOfType<KaijuStats>().TriggerEvolution();
+					}
 				}
-				if ((int)timeRemaining == fashionTimes[curFashion])
+				if (curFashion < fashionTimes.Count)
 				{
-					curFashion++;
-					FindObjectOfType<FashionShow>().MakeFashionShowAvailable();
+					if ((int)timeRemaining == fashionTimes[curFashion])
+					{
+						curFashion++;
+						FindObjectOfType<FashionShow>().MakeFashionShowAvailable();
+					}
 				}
 			}
             else
@@ -70,7 +77,7 @@ public class TriggeredTimer : MonoBehaviour
 		{
 			evolveTimes.Add(totalTime2 - evolutionFrequency);
 			totalTime2 -= evolutionFrequency;
-			if (totalTime2 - evolutionFrequency < 0)
+			if (totalTime2 - evolutionFrequency <= 0)
 			{
 				break;
 			}
@@ -80,7 +87,7 @@ public class TriggeredTimer : MonoBehaviour
 		{
 			fashionTimes.Add(totalTime2 - fashionShowFrequency);
 			totalTime2 -= fashionShowFrequency;
-			if (totalTime2 - fashionShowFrequency < 0)
+			if (totalTime2 - fashionShowFrequency <= 0)
 			{
 				break;
 			}

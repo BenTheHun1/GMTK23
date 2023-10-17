@@ -458,18 +458,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1553480386271361476, guid: b4dcb6acd940c18458cf6321273412ba, type: 3}
-      propertyPath: m_fontSize
-      value: 78.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 1553480386271361476, guid: b4dcb6acd940c18458cf6321273412ba, type: 3}
-      propertyPath: m_fontSizeMax
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1553480386271361476, guid: b4dcb6acd940c18458cf6321273412ba, type: 3}
-      propertyPath: m_enableAutoSizing
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1553480386762779084, guid: b4dcb6acd940c18458cf6321273412ba, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -558,18 +546,9 @@ PrefabInstance:
       propertyPath: kaijuName
       value: 
       objectReference: {fileID: 789431929}
-    - target: {fileID: 1553480386762779087, guid: b4dcb6acd940c18458cf6321273412ba, type: 3}
-      propertyPath: howToPlayPassages.Array.data[0]
-      value: You have a little Kaiju to raise! Humanity will attack in 35 minutes.
-        Until then, keep them fed, and their destructive impulses satiated.
-      objectReference: {fileID: 0}
     - target: {fileID: 1553480386762779184, guid: b4dcb6acd940c18458cf6321273412ba, type: 3}
       propertyPath: m_Name
       value: HowToPlayCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 1553480386762779184, guid: b4dcb6acd940c18458cf6321273412ba, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4dcb6acd940c18458cf6321273412ba, type: 3}
@@ -1021,6 +1000,10 @@ PrefabInstance:
     - target: {fileID: 6241553057513836703, guid: dd971bd6e41f38744859fa0a51ac6ec6, type: 3}
       propertyPath: m_Name
       value: ratminigame
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241553057513836703, guid: dd971bd6e41f38744859fa0a51ac6ec6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd971bd6e41f38744859fa0a51ac6ec6, type: 3}
@@ -1512,6 +1495,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: appleminigame
       objectReference: {fileID: 0}
+    - target: {fileID: 863172904381925714, guid: c82e4b3ad666b6543b61620abab6b655, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 863172904381925724, guid: c82e4b3ad666b6543b61620abab6b655, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -1623,10 +1610,6 @@ PrefabInstance:
     - target: {fileID: 4472787529772878146, guid: c8b18fff087cbe047b731659fe258c05, type: 3}
       propertyPath: m_Name
       value: GameEndCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 4472787529772878146, guid: c8b18fff087cbe047b731659fe258c05, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4472787529772878174, guid: c8b18fff087cbe047b731659fe258c05, type: 3}
       propertyPath: m_Pivot.x

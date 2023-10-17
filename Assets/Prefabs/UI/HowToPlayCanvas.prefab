@@ -1064,12 +1064,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
+  m_fontSize: 78.55
   m_fontSizeBase: 70
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 100
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
@@ -1440,7 +1440,7 @@ MonoBehaviour:
   howToPlayText: {fileID: 1553480386271361476}
   pageNumberText: {fileID: 1553480386114508367}
   howToPlayPassages:
-  - You have a little Kaiju to raise! Humanity will attack in 30 minutes. Until then,
+  - You have a little Kaiju to raise! Humanity will attack in 15 minutes. Until then,
     keep them fed, and their destructive impulses satiated.
   - You can buy food in the Shop, or you can play two different mini games. Be conscious
     of what you are feeding your Kaiju, as it may influence how it develops.

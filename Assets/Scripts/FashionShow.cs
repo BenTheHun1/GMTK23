@@ -9,7 +9,7 @@ public class FashionShow : MonoBehaviour
 	public float curThreshold;
 	private KaijuStats kaiju;
 	public GameObject kaijuBody;
-	private int performanceStep;
+	public int performanceStep;
 	public GameObject close;
 
 	public TextMeshProUGUI curSexy, needSexy, Result;
@@ -48,7 +48,13 @@ public class FashionShow : MonoBehaviour
 
 	public void MoveLeft()
 	{
-		if (performanceStep > 2)
+		if (performanceStep == 7)
+		{
+			LeanTween.moveX(kaijuBody, runwayL.position.x, 1f).setOnComplete(() => MoveRight());
+			performanceStep--;
+			ProceedPerformance();
+		}
+		else if (performanceStep > 2)
 		{
 			LeanTween.moveX(kaijuBody, runwayL.position.x, 2f).setOnComplete(() => MoveRight());
 			performanceStep--;

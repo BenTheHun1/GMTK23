@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 722a8f7a7d662444c99b83f3eb807091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fashionShowFrequency: 300
-  evolutionFrequency: 900
-  totalTime: 2100
+  fashionShowFrequency: 150
+  evolutionFrequency: 300
+  totalTime: 900
   timeRemaining: 0
   debugEndTimer: 0
   isTimerRunning: 0
@@ -56,3 +56,4 @@ MonoBehaviour:
   curEvolve: 0
   fashionTimes: []
   curFashion: 0
+  timeSpeed: 1
